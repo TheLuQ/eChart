@@ -1,0 +1,6 @@
+{
+    "name": "eChart",
+    "dockerComposeFile": "docker-compose.yml",
+    "workspaceFolder": "/workspace",
+    "service": "eChart"
+}
