@@ -1,28 +1,70 @@
 {
     "titles": [
-        "Dusty Trails",
-        "The Kerry Bog"
+        {
+            "title": "Dusty Trails"
+        },
+        {
+            "title": "The Kerry Bog"
+        }
     ],
     "instruments": [
-        "congas",
-        "Tuba",
-        "Tenorsx",
-        "Oboe",
-        "Bsax",
-        "Score",
-        "Percussion",
-        "Trombone",
-        "Clarinet",
-        "Horn",
-        "Alto Sax",
-        "Trumpet",
-        "Flute",
-        "Bells",
-        "timpani",
-        "tambourine",
-        "tenor sax",
-        "bari sax",
-        "bass clar"
+        {
+            "name": "congas"
+        },
+        {
+            "name": "Tuba"
+        },
+        {
+            "name": "Tenorsx"
+        },
+        {
+            "name": "Oboe"
+        },
+        {
+            "name": "Bsax"
+        },
+        {
+            "name": "Score"
+        },
+        {
+            "name": "Percussion"
+        },
+        {
+            "name": "Trombone"
+        },
+        {
+            "name": "Clarinet"
+        },
+        {
+            "name": "Horn"
+        },
+        {
+            "name": "Alto Sax"
+        },
+        {
+            "name": "Trumpet"
+        },
+        {
+            "name": "Flute"
+        },
+        {
+            "name": "Bells"
+        },
+        {
+            "name": "timpani"
+        },
+        {
+            "name": "tambourine"
+        },
+        {
+            "name": "tenor sax"
+        },
+        {
+            "name": "bari sax"
+        },
+        {
+            "name": "bass clar"
+        }
     ],
     "sheets": [
         {

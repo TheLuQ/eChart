@@ -3,8 +3,23 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .input {
   padding: 0.5em;
+}
+
+.radio {
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.acc {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  width: 400px;
 }

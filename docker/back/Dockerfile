@@ -1,4 +1,4 @@
-from node
+FROM node
 
 ARG NODE_REG=https://registry.npmjs.org/
 
