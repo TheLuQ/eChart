@@ -1,30 +1,25 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import {
-  Autocomplete,
-  Button,
-  Divider,
-  FormControlLabel,
-  FormLabel,
-  List,
-  ListItemButton,
-  ListItemText,
-  Radio,
-  RadioGroup,
-  TextField,
-  type AutocompleteRenderInputParams
+  ButtonGroup,
+  IconButton,
+  Paper
 } from '@mui/material'
+import { NavigateBefore, NavigateNext } from '@mui/icons-material'
+import Search from './components/Search'
+import SheetList from './components/SheetList'
 
-interface Instrument {
-  name: string
+export interface Instrument {
+  short_name: string
+  full_name: string
+  category: string
 }
 
-interface Song {
+export interface Song {
   title: string
 }
 
-interface Sheet {
+export interface Sheet {
   kind: string
   id: string
   name: string
@@ -33,12 +28,10 @@ interface Sheet {
   instrument: string
 }
 
-interface SheetGroup {
+export interface SheetGroup {
   title: string
   sheets: Sheet[]
 }
-
-type GroupingKey = (sh: Sheet) => string
 
 function App() {
   const [instruments, setInstruments] = useState<Instrument[]>([])
@@ -47,30 +40,31 @@ function App() {
   const [selSongs, selectSongs] = useState<Song[]>([])
   const [groupMethod2, selectGroupMethod2] = useState<number>(-1)
   const [sheets, setSheets] = useState<Sheet[]>([])
+  const [step, setStep] = useState<number>(0)
+  const filterSheetFn = (sh: Sheet) => (
+    selSongs.map(s => s.title).includes(sh.title) && selInstruments.map(i => i.short_name).includes(sh.instrument)
+  )
 
-  const confs = [
-    { state: 'instrument', fn: (sheet: Sheet) => sheet.instrument },
-    { state: 'type', fn: (sheet: Sheet) => sheet.mimeType }
-  ]
-  const currentConf = confs[groupMethod2]
+  const firstStep = (
+    <Search
+      songs={songs}
+      instruments={instruments}
+      selInstruments={selInstruments}
+      selSongs={selSongs}
+      selectSongs={selectSongs}
+      selectInstruments={selectInstruments}
+    />
+  )
 
-  function createGroups(sheets: Sheet[], getKey: GroupingKey) {
-    const resultMap = new Map<string, Sheet[]>()
+  const secondStep = (
+    <SheetList
+      groupingIndex={groupMethod2}
+      selectGroupingIndex={selectGroupMethod2}
+      sheets={sheets.filter(filterSheetFn)}
+    />
+  )
 
-    sheets.forEach(sheet => {
-      const key = getKey(sheet)
-      const prev = resultMap.get(key) || []
-      prev.push(sheet)
-      resultMap.set(key, prev)
-    })
-
-    return Array.from(resultMap.entries())
-      .map<SheetGroup>(entry => ({
-        title: entry[0],
-        sheets: entry[1]
-      }))
-  }
-
+  const steps = [firstStep, secondStep]
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND}/instruments`)
@@ -90,95 +84,32 @@ function App() {
     <>
       <h1>eChart</h1>
 
-      <div hidden>
-        <p>Select which sheets do you want to show</p>
+      <Paper elevation={0}>
+        {steps[step]}
+      </Paper>
 
-        <Autocomplete
-          multiple
-          value={selSongs}
-          className='input'
-          disableCloseOnSelect={true}
-          getOptionLabel={(opt) => opt.title}
-          isOptionEqualToValue={(a, b) => a.title === b.title}
-          onChange={(_, value) => selectSongs(value)}
-          renderInput={(params: AutocompleteRenderInputParams) => (
-            <TextField
-              sx={{ maxWidth: '500px' }}
-              multiline
-              {...params}
-              label="Select songs"
-              variant="outlined"
-            />
-          )}
-          options={songs}
-        />
-
-        <Autocomplete
-          multiple
-          value={selInstruments}
-          className='input'
-          disableCloseOnSelect={true}
-          getOptionLabel={(opt) => opt.name}
-          isOptionEqualToValue={(a, b) => a.name === b.name}
-          onChange={(_, value) => selectInstruments(value)}
-          autoHighlight={true}
-          renderInput={(params: AutocompleteRenderInputParams) => (
-            <TextField
-              sx={{ maxWidth: '500px' }}
-              multiline
-              {...params}
-              label="Select instruments"
-              variant="outlined"
-            />
-          )}
-          options={instruments}
-        />
-      </div>
-
-      <div className='radio'>
-        <FormLabel id="demo-radio-buttons-group-label">
-          Choose grouping type
-        </FormLabel>
-
-        <RadioGroup
-          row
-          aria-labelledby="demo-radio-buttons-group-label"
-          name="radio-buttons-group"
-          value={groupMethod2}
+      <ButtonGroup
+        className='navigation'
+        sx={{ justifyContent: 'space-between' }}
+      >
+        <IconButton
+          size='small'
+          color='primary'
+          onClick={() => setStep(prev => prev - 1)}
+          disabled={step === 0}
         >
-          {confs.map((conf, index) => (
-            <FormControlLabel
-              key={conf.state}
-              checked={groupMethod2 === index}
-              onChange={() => selectGroupMethod2(index)}
-              value={conf.state}
-              control={<Radio />}
-              label={conf.state}
-            />
-          ))}
-        </RadioGroup>
-      </div>
+          <NavigateBefore /> Back
+        </IconButton>
 
-      <div hidden={groupMethod2 === -1}>
-        <List>
-          {groupMethod2 >= 0 &&
-            createGroups(sheets, currentConf.fn).map(group => (
-              <div key={group.title}>
-                <ListItemButton sx={{ justifyContent: 'space-between' }}>
-                  <ListItemText
-                    primary={group.title}
-                    secondary={`${group.sheets.length} files`}
-                  />
-                  <Button>
-                    <OpenInNewIcon color="primary" />
-                  </Button>
-                </ListItemButton>
-                <Divider />
-              </div>
-            ))
-          }
-        </List>
-      </div>
+        <IconButton
+          size='small'
+          color='primary'
+          onClick={() => setStep(prev => prev + 1)}
+          disabled={step === steps.length - 1}
+        >
+          Next <NavigateNext />
+        </IconButton>
+      </ButtonGroup>
     </>
   )
 }

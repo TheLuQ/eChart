@@ -9,61 +9,234 @@
     ],
     "instruments": [
         {
-            "name": "congas"
+            "short_name": "fl",
+            "full_name": "flute",
+            "category": "woodwind"
         },
         {
-            "name": "Tuba"
+            "short_name": "picc",
+            "full_name": "piccolo",
+            "category": "woodwind"
         },
         {
-            "name": "Tenorsx"
+            "short_name": "alto fl",
+            "full_name": "alto flute",
+            "category": "woodwind"
         },
         {
-            "name": "Oboe"
+            "short_name": "bass fl",
+            "full_name": "bass flute",
+            "category": "woodwind"
         },
         {
-            "name": "Bsax"
+            "short_name": "ob",
+            "full_name": "oboe",
+            "category": "woodwind"
         },
         {
-            "name": "Score"
+            "short_name": "eng hn",
+            "full_name": "english horn",
+            "category": "woodwind"
         },
         {
-            "name": "Percussion"
+            "short_name": "cl",
+            "full_name": "clarinet",
+            "category": "woodwind"
         },
         {
-            "name": "Trombone"
+            "short_name": "eb cl",
+            "full_name": "eb clarinet",
+            "category": "woodwind"
         },
         {
-            "name": "Clarinet"
+            "short_name": "bass cl",
+            "full_name": "bass clarinet",
+            "category": "woodwind"
         },
         {
-            "name": "Horn"
+            "short_name": "alto cl",
+            "full_name": "alto clarinet",
+            "category": "woodwind"
         },
         {
-            "name": "Alto Sax"
+            "short_name": "soprano sax",
+            "full_name": "soprano saxophone",
+            "category": "woodwind"
         },
         {
-            "name": "Trumpet"
+            "short_name": "alto sax",
+            "full_name": "alto saxophone",
+            "category": "woodwind"
         },
         {
-            "name": "Flute"
+            "short_name": "tenor sax",
+            "full_name": "tenor saxophone",
+            "category": "woodwind"
         },
         {
-            "name": "Bells"
+            "short_name": "bari sax",
+            "full_name": "baritone saxophone",
+            "category": "woodwind"
         },
         {
-            "name": "timpani"
+            "short_name": "bassoon",
+            "full_name": "bassoon",
+            "category": "woodwind"
         },
         {
-            "name": "tambourine"
+            "short_name": "contrabassoon",
+            "full_name": "contrabassoon",
+            "category": "woodwind"
         },
         {
-            "name": "tenor sax"
+            "short_name": "recorder",
+            "full_name": "recorder",
+            "category": "woodwind"
         },
         {
-            "name": "bari sax"
+            "short_name": "pan flute",
+            "full_name": "pan flute",
+            "category": "woodwind"
         },
         {
-            "name": "bass clar"
+            "short_name": "harmonica",
+            "full_name": "harmonica",
+            "category": "woodwind"
+        },
+        {
+            "short_name": "trumpet",
+            "full_name": "trumpet",
+            "category": "brass"
+        },
+        {
+            "short_name": "cornet",
+            "full_name": "cornet",
+            "category": "brass"
+        },
+        {
+            "short_name": "flugelhorn",
+            "full_name": "flugelhorn",
+            "category": "brass"
+        },
+        {
+            "short_name": "french horn",
+            "full_name": "french horn",
+            "category": "brass"
+        },
+        {
+            "short_name": "trombone",
+            "full_name": "trombone",
+            "category": "brass"
+        },
+        {
+            "short_name": "bass trombone",
+            "full_name": "bass trombone",
+            "category": "brass"
+        },
+        {
+            "short_name": "euphonium",
+            "full_name": "euphonium",
+            "category": "brass"
+        },
+        {
+            "short_name": "baritone",
+            "full_name": "baritone",
+            "category": "brass"
+        },
+        {
+            "short_name": "tuba",
+            "full_name": "tuba",
+            "category": "brass"
+        },
+        {
+            "short_name": "sousaphone",
+            "full_name": "sousaphone",
+            "category": "brass"
+        },
+        {
+            "short_name": "bugle",
+            "full_name": "bugle",
+            "category": "brass"
+        },
+        {
+            "short_name": "piccolo trumpet",
+            "full_name": "piccolo trumpet",
+            "category": "brass"
+        },
+        {
+            "short_name": "timp",
+            "full_name": "timpani",
+            "category": "percussion"
+        },
+        {
+            "short_name": "snare",
+            "full_name": "snare drum",
+            "category": "percussion"
+        },
+        {
+            "short_name": "bass drum",
+            "full_name": "bass drum",
+            "category": "percussion"
+        },
+        {
+            "short_name": "cymbals",
+            "full_name": "cymbals",
+            "category": "percussion"
+        },
+        {
+            "short_name": "triangle",
+            "full_name": "triangle",
+            "category": "percussion"
+        },
+        {
+            "short_name": "xylophone",
+            "full_name": "xylophone",
+            "category": "percussion"
+        },
+        {
+            "short_name": "marimba",
+            "full_name": "marimba",
+            "category": "percussion"
+        },
+        {
+            "short_name": "vibraphone",
+            "full_name": "vibraphone",
+            "category": "percussion"
+        },
+        {
+            "short_name": "glockenspiel",
+            "full_name": "glockenspiel",
+            "category": "percussion"
+        },
+        {
+            "short_name": "chimes",
+            "full_name": "chimes",
+            "category": "percussion"
+        },
+        {
+            "short_name": "tambourine",
+            "full_name": "tambourine",
+            "category": "percussion"
+        },
+        {
+            "short_name": "castanets",
+            "full_name": "castanets",
+            "category": "percussion"
+        },
+        {
+            "short_name": "wood block",
+            "full_name": "wood block",
+            "category": "percussion"
+        },
+        {
+            "short_name": "cowbell",
+            "full_name": "cowbell",
+            "category": "percussion"
+        },
+        {
+            "short_name": "gong",
+            "full_name": "gong",
+            "category": "percussion"
         }
     ],
     "sheets": [
@@ -89,7 +262,7 @@
             "name": "Dusty Trails - Tuba.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "tba"
+            "instrument": "tuba"
         },
         {
             "kind": "drive#file",
@@ -97,7 +270,7 @@
             "name": "Dusty Trails - Tenorsx:Basscl.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "tenor"
+            "instrument": "tenor sax"
         },
         {
             "kind": "drive#file",
@@ -113,7 +286,7 @@
             "name": "Dusty Trails - Bsax.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "bari"
+            "instrument": "bari sax"
         },
         {
             "kind": "drive#file",
@@ -128,7 +301,7 @@
             "id": "1ZvirdXwL5q3Hu9iSNQRmIpBUrpdKoeGI",
             "name": "Dusty Trails - Percussion 2.pdf",
             "mimeType": "application/pdf",
-            "instrument": "perc"
+            "instrument": "snare"
         },
         {
             "kind": "drive#file",
@@ -136,7 +309,7 @@
             "name": "Dusty Trails - Percussion 1.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "perc"
+            "instrument": "snare"
         },
         {
             "kind": "drive#file",
@@ -144,7 +317,7 @@
             "name": "Dusty Trails - Trombone.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "tbn"
+            "instrument": "trombone"
         },
         {
             "kind": "drive#file",
@@ -160,7 +333,7 @@
             "name": "Dusty Trails - Horn in F.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "hn"
+            "instrument": "french horn"
         },
         {
             "kind": "drive#file",
@@ -168,7 +341,7 @@
             "name": "Dusty Trails - Alto Sax..pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "alto"
+            "instrument": "alto sax"
         },
         {
             "kind": "drive#file",
@@ -176,7 +349,7 @@
             "name": "Dusty Trails - Trumpet in Bb.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "tpt"
+            "instrument": "trumpet"
         },
         {
             "kind": "drive#file",
@@ -192,7 +365,7 @@
             "name": "Dusty Trails - Bells.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "bells"
+            "instrument": "glockenspiel"
         },
         {
             "kind": "drive#file",
@@ -239,7 +412,7 @@
             "name": "The Kerry Bog - Horn in F.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "hn"
+            "instrument": "french horn"
         },
         {
             "kind": "drive#file",
@@ -247,7 +420,7 @@
             "name": "The Kerry Bog - tenor:bass drum.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "perc"
+            "instrument": "bass drum"
         },
         {
             "kind": "drive#file",
@@ -255,7 +428,7 @@
             "name": "The Kerry Bog - trombone.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "tbn"
+            "instrument": "trombone"
         },
         {
             "kind": "drive#file",
@@ -271,7 +444,7 @@
             "name": "The Kerry Bog - tuba.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "tba"
+            "instrument": "tuba"
         },
         {
             "kind": "drive#file",
@@ -279,7 +452,7 @@
             "name": "The Kerry Bog - trumpet.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "tpt"
+            "instrument": "trumpet"
         },
         {
             "kind": "drive#file",
@@ -287,7 +460,7 @@
             "name": "The Kerry Bog - tambourine.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "tamb"
+            "instrument": "tambourine"
         },
         {
             "kind": "drive#file",
@@ -303,7 +476,7 @@
             "name": "The Kerry Bog - tenor sax.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "tenor"
+            "instrument": "tenor sax"
         },
         {
             "kind": "drive#file",
@@ -311,7 +484,7 @@
             "name": "The Kerry Bog - bari sax.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "bari"
+            "instrument": "bari sax"
         },
         {
             "kind": "drive#file",
@@ -319,7 +492,7 @@
             "name": "The Kerry Bog - alto sax.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "alto"
+            "instrument": "alto sax"
         },
         {
             "kind": "drive#file",
@@ -327,7 +500,7 @@
             "name": "The Kerry Bog - bells.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "bells"
+            "instrument": "glockenspiel"
         },
         {
             "kind": "drive#file",
@@ -343,7 +516,7 @@
             "name": "The Kerry Bog - bass clar.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "bcl"
+            "instrument": "bass cl"
         }
     ]
 }
