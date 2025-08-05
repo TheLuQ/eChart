@@ -11,7 +11,8 @@ import {
   RadioGroup
 } from '@mui/material'
 import type { Sheet, SheetGroup } from '../App'
-import type { SetStateAction } from 'react'
+import { type SetStateAction } from 'react'
+import { mergePdfs } from '../PdfReader'
 
 type GroupingKey = (sh: Sheet) => string
 
@@ -84,8 +85,9 @@ export default function SheetList(props: ListProps) {
                     primary={group.title}
                     secondary={`${group.sheets.length} files`}
                   />
-                  <Button>
+                  <Button onClick={() => mergePdfs(group.sheets, group.title)}>
                     <OpenInNewIcon color="primary" />
+                    Yep
                   </Button>
                 </ListItemButton>
                 <Divider />

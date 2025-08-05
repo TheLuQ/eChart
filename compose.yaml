@@ -6,6 +6,12 @@ services:
     ports:
       - 3002:3001
 
+  filesprovider:
+    image: filesprovider
+    container_name: files_db
+    ports:
+      - 4366:80
+
   frontend:
     build:
       context: .
