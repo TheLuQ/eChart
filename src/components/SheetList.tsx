@@ -1,4 +1,4 @@
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import DownloadIcon from '@mui/icons-material/Download';
 import {
   Button,
   Divider,
@@ -11,26 +11,26 @@ import {
   RadioGroup
 } from '@mui/material'
 import type { Sheet, SheetGroup } from '../App'
-import { type SetStateAction } from 'react'
+import { useState } from 'react'
 import { mergePdfs } from '../PdfReader'
 
 type GroupingKey = (sh: Sheet) => string
 
 interface ListProps {
-  groupingIndex: number
-  selectGroupingIndex: (value: SetStateAction<number>) => void
   sheets: Sheet[]
 }
 
 export default function SheetList(props: ListProps) {
-  const { groupingIndex, selectGroupingIndex, sheets } = props
+  const { sheets } = props
+  const [groupingIndex, selectGroupingIndex] = useState(0)
 
   const confs = [
     { state: 'instrument', fn: (sheet: Sheet) => sheet.instrument },
-    { state: 'type', fn: (sheet: Sheet) => sheet.mimeType },
+    { state: 'one file', fn: (sheet: Sheet) => sheet.mimeType },
     { state: 'title', fn: (sheet: Sheet) => sheet.title }
   ]
   const currentConf = confs[groupingIndex]
+  const currentGroups = createGroups(sheets, currentConf.fn)
 
   function createGroups(sheets: Sheet[], getKey: GroupingKey) {
     const resultMap = new Map<string, Sheet[]>()
@@ -78,7 +78,7 @@ export default function SheetList(props: ListProps) {
       <div hidden={groupingIndex === -1}>
         <List>
           {groupingIndex >= 0 &&
-            createGroups(sheets, currentConf.fn).map(group => (
+            currentGroups.map(group => (
               <div key={group.title}>
                 <ListItemButton sx={{ justifyContent: 'space-between' }}>
                   <ListItemText
@@ -86,8 +86,7 @@ export default function SheetList(props: ListProps) {
                     secondary={`${group.sheets.length} files`}
                   />
                   <Button onClick={() => mergePdfs(group.sheets, group.title)}>
-                    <OpenInNewIcon color="primary" />
-                    Yep
+                    <DownloadIcon color="primary" />
                   </Button>
                 </ListItemButton>
                 <Divider />

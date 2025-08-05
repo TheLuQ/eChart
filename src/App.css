@@ -29,4 +29,6 @@ h1 {
 
 .navigation {
   margin-top: 1.5em;
+  display: flex !important;
+  justify-content: space-between;
 }
