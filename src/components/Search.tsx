@@ -5,19 +5,18 @@ import {
 } from "@mui/material"
 import React, {
   useEffect,
-  useImperativeHandle,
   useState,
   type SetStateAction
 } from "react"
-import type { Instrument, Sheet, Song, Stepper } from "../App"
+import type { Instrument, Sheet, Song } from "../App"
+import Navigation, { type NavigationProps } from "./Navigation"
 
-interface MyProps {
-  ref: React.RefObject<Stepper>
+interface MyProps extends NavigationProps {
   setFilteredSheets: React.Dispatch<SetStateAction<Sheet[]>>
 }
 
 export default function Search(props: MyProps) {
-  const { ref, setFilteredSheets } = props
+  const { setFilteredSheets, prevAction, nextAction } = props
 
   // State management
   const [instruments, setInstruments] = useState<Instrument[]>([])
@@ -33,16 +32,11 @@ export default function Search(props: MyProps) {
     selInstruments.map(i => i.short_name).includes(sh.instrument)
   )
   const filtSheets = sheets.filter(filterSheetFn)
-  const errstate = [selSongs.length === 0, selInstruments.length === 0]
-
-  // Imperative handle for stepper
-  useImperativeHandle(ref, () => ({
-    submit: () => {
-      setFilteredSheets(filtSheets)
-    },
-    label: 'Next',
-    canSubmit: () => { setErrState(errstate); return selSongs.length > 0 && selInstruments.length > 0 }
-  }))
+  const canSubmit = () => {
+    const inputErrors = [selSongs.length === 0, selInstruments.length === 0]
+    setErrState(inputErrors)
+    return !inputErrors[0] && !inputErrors[1]
+  }
 
   // Data fetching effect
   useEffect(() => {
@@ -78,7 +72,7 @@ export default function Search(props: MyProps) {
             sx={{ maxWidth: '500px' }}
             multiline
             error={errState[0]}
-            onClick={() => setErrState(prev => [false, prev[1]])}
+            onFocus={() => setErrState(prev => [false, prev[1]])}
             {...params}
             label="Select songs"
             variant="outlined"
@@ -103,13 +97,18 @@ export default function Search(props: MyProps) {
             sx={{ maxWidth: '500px' }}
             multiline
             error={errState[1]}
-            onClick={() => setErrState(prev => [prev[0], false])}
+            onFocus={() => setErrState(prev => [prev[0], false])}
             {...params}
             label="Select instruments"
             variant="outlined"
             helperText={errState[1] ? 'Please select which instruments do you want to select...' : null}
           />
         )}
+      />
+      <Navigation
+        prevAction={prevAction}
+        nextAction={() => { setFilteredSheets(filtSheets); if (canSubmit()) { nextAction?.() } }}
+        prevDisabled={true}
       />
     </>
   )

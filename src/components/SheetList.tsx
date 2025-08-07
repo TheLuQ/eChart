@@ -13,15 +13,17 @@ import {
 import type { Sheet, SheetGroup } from '../App'
 import { useState } from 'react'
 import { mergePdfs } from '../PdfReader'
+import type { NavigationProps } from './Navigation';
+import Navigation from './Navigation';
 
 type GroupingKey = (sh: Sheet) => string
 
-interface ListProps {
+interface ListProps extends NavigationProps {
   sheets: Sheet[]
 }
 
 export default function SheetList(props: ListProps) {
-  const { sheets } = props
+  const { sheets, prevAction } = props
   const [groupingIndex, selectGroupingIndex] = useState(0)
 
   const confs = [
@@ -31,6 +33,7 @@ export default function SheetList(props: ListProps) {
   ]
   const currentConf = confs[groupingIndex]
   const currentGroups = createGroups(sheets, currentConf.fn)
+  const getAllGroups = () => currentGroups.forEach(gr => mergePdfs(gr.sheets, gr.title))
 
   function createGroups(sheets: Sheet[], getKey: GroupingKey) {
     const resultMap = new Map<string, Sheet[]>()
@@ -51,7 +54,7 @@ export default function SheetList(props: ListProps) {
 
   return (
     <>
-      <div className='radio'>
+      <div className='radio' hidden={sheets.length === 0}>
         <FormLabel id="demo-radio-buttons-group-label">
           Choose grouping type
         </FormLabel>
@@ -76,7 +79,7 @@ export default function SheetList(props: ListProps) {
       </div>
 
       <div hidden={groupingIndex === -1}>
-        <List>
+        {sheets.length > 0 ? <List>
           {groupingIndex >= 0 &&
             currentGroups.map(group => (
               <div key={group.title}>
@@ -93,7 +96,13 @@ export default function SheetList(props: ListProps) {
               </div>
             ))
           }
-        </List>
+        </List> : <div>No results. Please redefine query</div>}
+        <Navigation
+          prevAction={prevAction}
+          nextAction={getAllGroups}
+          prevDisabled={false}
+          customNextButtonLabel={<>Get all <DownloadIcon color="primary" /></>}
+        />
       </div>
     </>
   )
