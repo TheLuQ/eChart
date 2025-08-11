@@ -5,17 +5,17 @@ import * as  db from '../docker/back/db.json'
 
 export function setupRoutes() {
     const app = express()
-    app.get("/titles", (req: Request, res: Response) => {
+    app.get("/titles", (_req: Request, res: Response) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(db.titles));
     });
 
-    app.get("/instruments", (req: Request, res: Response) => {
+    app.get("/instruments", (_req: Request, res: Response) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(db.instruments));
     });
 
-    app.get("/sheets", (req: Request, res: Response) => {
+    app.get("/sheets", (_req: Request, res: Response) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(db.sheets));
     });
