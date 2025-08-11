@@ -19,12 +19,13 @@ import Navigation from './Navigation';
 type GroupingKey = (sh: Sheet) => string
 
 interface ListProps extends NavigationProps {
-  sheets: Sheet[]
+  sheets: Sheet[],
+  defaultGroupingOption?: number
 }
 
 export default function SheetList(props: ListProps) {
-  const { sheets, prevAction } = props
-  const [groupingIndex, selectGroupingIndex] = useState(0)
+  const { sheets, prevAction, defaultGroupingOption } = props
+  const [groupingIndex, selectGroupingIndex] = useState(defaultGroupingOption ?? 0)
 
   const confs = [
     { state: 'instrument', fn: (sheet: Sheet) => sheet.instrument },
