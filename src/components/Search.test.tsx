@@ -1,7 +1,7 @@
 import Search from "./Search";
 import { type Dispatch, type SetStateAction } from "react";
 import type { Sheet } from "../App";
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 import { setupRoutes } from "../setupTests";
 
@@ -23,28 +23,20 @@ const renderSearch = (setFilteredSheets?: Dispatch<SetStateAction<Sheet[]>>, pre
         />
     )
 
-it('shows songs options', async () => {
-    renderSearch()
-    const element = screen.getByLabelText(/select songs/i)
-    expect(element).toBeInTheDocument()
+it('filters sheets with proper song and instrument', async () => {
+    const resultFn = vi.fn()
+    renderSearch(resultFn)
 
-    await userEvent.click(element)
+    await userEvent.click(screen.getAllByRole('combobox')[0])
+        .then(() => screen.findByText(/dusty trails/i))
+        .then(element => userEvent.click(element))
 
-    const songsInput = await screen.findByRole('listbox')
+    fireEvent.keyDown(document.activeElement!, { key: 'Escape', code: 'Escape' })
 
-    const options = within(songsInput).getAllByRole('option').map(opt => opt.textContent)
-    expect(options).containSubset(['The Kerry Bog', 'Dusty Trails'])
-})
-
-it('shows instruments options', async () => {
-    renderSearch()
-    const element = screen.getByLabelText(/select instruments/i)
-    expect(element).toBeInTheDocument()
-
-    await userEvent.click(element)
-
-    const instrumentInput = await screen.findByRole('listbox')
-
-    const options = within(instrumentInput).getAllByRole('option').map(opt => opt.textContent)
-    expect(options).containSubset(['clarinet', 'flute'])
+    await userEvent.click(screen.getAllByRole('combobox')[1])
+    await userEvent.click(screen.getByText(/tuba/i))
+    await userEvent.click(screen.getByText(/next/i))
+    const result = resultFn.mock.lastCall?.[0] as Sheet[]
+    expect(result[0].instrument).toEqual('tuba')
+    expect(result[0].title).toEqual('Dusty Trails')
 })

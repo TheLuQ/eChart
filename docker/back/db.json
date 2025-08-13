@@ -270,7 +270,7 @@
             "name": "Dusty Trails - Tenorsx:Basscl.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "tenor sax"
+            "instrument": "tenor saxophone"
         },
         {
             "kind": "drive#file",
@@ -278,7 +278,7 @@
             "name": "Dusty Trails - Oboe.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "ob"
+            "instrument": "oboe"
         },
         {
             "kind": "drive#file",
@@ -286,7 +286,7 @@
             "name": "Dusty Trails - Bsax.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "bari sax"
+            "instrument": "baritone saxophone"
         },
         {
             "kind": "drive#file",
@@ -309,7 +309,7 @@
             "name": "Dusty Trails - Percussion 1.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "snare"
+            "instrument": "snare drum"
         },
         {
             "kind": "drive#file",
@@ -325,7 +325,7 @@
             "name": "Dusty Trails - Clarinet in Bb.pdf",
             "mimeType": "application/pdf",
             "title": "Dusty Trails",
-            "instrument": "cl"
+            "instrument": "clarinet"
         },
         {
             "kind": "drive#file",
@@ -436,7 +436,7 @@
             "name": "The Kerry Bog - timpani.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "timp"
+            "instrument": "timpani"
         },
         {
             "kind": "drive#file",
@@ -468,7 +468,7 @@
             "name": "The Kerry Bog - flute.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "fl"
+            "instrument": "flute"
         },
         {
             "kind": "drive#file",
@@ -476,7 +476,7 @@
             "name": "The Kerry Bog - tenor sax.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "tenor sax"
+            "instrument": "tenor saxophone"
         },
         {
             "kind": "drive#file",
@@ -484,7 +484,7 @@
             "name": "The Kerry Bog - bari sax.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "bari sax"
+            "instrument": "baritone saxophone"
         },
         {
             "kind": "drive#file",
@@ -492,7 +492,7 @@
             "name": "The Kerry Bog - alto sax.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "alto sax"
+            "instrument": "alto saxophone"
         },
         {
             "kind": "drive#file",
@@ -508,7 +508,7 @@
             "name": "The Kerry Bog - clarinet.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "cl"
+            "instrument": "clarinet"
         },
         {
             "kind": "drive#file",
@@ -516,7 +516,7 @@
             "name": "The Kerry Bog - bass clar.pdf",
             "mimeType": "application/pdf",
             "title": "The Kerry Bog",
-            "instrument": "bass cl"
+            "instrument": "bass clarinet"
         }
     ]
 }
