@@ -36,15 +36,15 @@ export default function Search(props: MyProps) {
 
   // Data fetching effect
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND}/instruments`)
+    fetch(`${import.meta.env.VITE_BACKEND}/api/instruments`)
       .then(res => res.json())
       .then(data => setInstruments(data))
 
-    fetch(`${import.meta.env.VITE_BACKEND}/titles`)
+    fetch(`${import.meta.env.VITE_BACKEND}/api/titles`)
       .then(res => res.json())
       .then(data => setSongs(data))
 
-    fetch(`${import.meta.env.VITE_BACKEND}/sheets`)
+    fetch(`${import.meta.env.VITE_BACKEND}/api/sheets`)
       .then(res => res.json())
       .then(data => setSheets(data))
   }, [])

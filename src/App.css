@@ -10,13 +10,12 @@
 
 .input {
   padding: 0.5em;
-  margin-top: 1.5em !important;
 }
 
 .mobileInput {
   display: flex !important;
   flex-direction: column !important;
-  margin-top: 2em !important;
+  margin-top: 1em !important;
 }
 
 .radio {

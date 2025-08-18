@@ -4,10 +4,11 @@ import type { Sheet } from "../App";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 import { setupRoutes } from "../setupTests";
+import * as  db from '../../docker/back/db.json'
 
 beforeAll(() => {
     vi.stubEnv('VITE_BACKEND', 'http://localhost:3003')
-    setupRoutes()
+    setupRoutes(db)
 })
 
 afterAll(() => {

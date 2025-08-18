@@ -2,15 +2,11 @@ services:
   backend:
     build:
       context: ./docker/back
+      args:
+        PIP_INDEX_URL: ${PIP_INDEX_URL}
     container_name: composeback
     ports:
-      - 3002:3001
-
-  filesprovider:
-    image: filesprovider
-    container_name: files_db
-    ports:
-      - 4366:80
+      - 3002:5000
 
   frontend:
     build:
@@ -18,6 +14,7 @@ services:
       dockerfile: ./docker/front/Dockerfile
       args:
         VITE_BACKEND: "http://localhost:3002"
+        NODE_REG: ${NODE_REG}
     container_name: composefront
     ports:
       - 4322:80

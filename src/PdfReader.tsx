@@ -11,7 +11,7 @@ async function fin(urls: string[]) {
 }
 
 function buildUrls(sheets: Sheet[]) {
-    return sheets.map(sheet => `${import.meta.env.VITE_FILES_DB}/${sheet.name.replaceAll(' ', '%20')}`)
+    return sheets.map(sheet => `${import.meta.env.VITE_BACKEND}/${sheet.id}.pdf`)
 }
 
 async function saveFile(doc: PDFDocument, title: string) {

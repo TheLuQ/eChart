@@ -1,12 +1,13 @@
-FROM node
+FROM python:3.8-slim-buster
 
-ARG NODE_REG=https://registry.npmjs.org/
+WORKDIR /python-docker
 
-WORKDIR /app
-RUN npm config set registry ${NODE_REG}
+ARG PIP_INDEX_URL
+ENV PIP_INDEX_URL ${PIP_INDEX_URL}
 
-RUN npm install -g json-server
+COPY . .
+RUN pip3 install -r requirements.txt
 
-COPY db.json .
+COPY . .
 
-CMD ["json-server", "db.json", "--port", "3001"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

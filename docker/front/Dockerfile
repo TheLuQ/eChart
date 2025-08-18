@@ -1,7 +1,7 @@
 FROM node AS build
 
-ARG NODE_REG=https://registry.npmjs.org/
 WORKDIR /app
+ARG NODE_REG
 RUN npm config set registry ${NODE_REG}
 
 COPY . .
