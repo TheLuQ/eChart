@@ -11,11 +11,13 @@ async function fin(urls: string[]) {
 }
 
 function buildUrls(sheets: Sheet[]) {
-    return sheets.map(sheet => `${import.meta.env.VITE_BACKEND}/${sheet.id}.pdf`)
+    return sheets.map(sheet => `${import.meta.env.VITE_BACKEND}/files/${sheet.id}`)
 }
 
 async function saveFile(doc: PDFDocument, title: string) {
-    const blob = await doc.save().then(output => new Blob([output], { type: 'application/pdf' }))
+    const blob = await doc.save()
+        .then(output => new Uint8Array(output))
+        .then(output => new Blob([output], { type: 'application/pdf' }));
     const a = document.createElement('a')
     a.download = title
     a.href = URL.createObjectURL(blob)

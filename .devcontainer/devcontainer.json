@@ -2,5 +2,12 @@
     "name": "eChart",
     "dockerComposeFile": "docker-compose.yml",
     "workspaceFolder": "/workspace",
-    "service": "eChart"
+    "service": "eChart",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vitest.explorer"
+            ]
+        }
+    }
 }

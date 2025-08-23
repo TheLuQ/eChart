@@ -10,6 +10,7 @@ ARG VITE_BACKEND
 RUN npm install
 RUN npm run build
 
-FROM nginx
+FROM nginx:stable-alpine3.21-slim
 
 COPY --from=build /app/dist /usr/share/nginx/html
+COPY ./docker/front/default.conf /etc/nginx/conf.d/

@@ -57,7 +57,7 @@ export default function Search(props: MyProps) {
         error={errState[0]}
         setError={() => setErrState(prev => [false, prev[1]])}
         label="Select songs"
-        options={songs.map(song => song.title)}
+        options={songs.map(song => song.title).sort()}
         setFilteredResult={setSelSongs}
       />
 
@@ -66,7 +66,7 @@ export default function Search(props: MyProps) {
         error={errState[1]}
         setError={() => setErrState(prev => [prev[0], false])}
         label="Select instruments"
-        options={instruments.map(instr => instr.full_name)}
+        options={instruments.map(instr => instr.full_name).sort()}
         setFilteredResult={selectInstruments}
       />
       <Navigation
