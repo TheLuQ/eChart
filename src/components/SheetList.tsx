@@ -1,5 +1,6 @@
 import DownloadIcon from '@mui/icons-material/Download';
 import {
+  Alert,
   Button,
   Divider,
   FormControlLabel,
@@ -8,7 +9,8 @@ import {
   ListItemButton,
   ListItemText,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Snackbar
 } from '@mui/material'
 import type { Sheet, SheetGroup } from '../App'
 import { useState } from 'react'
@@ -26,6 +28,7 @@ interface ListProps extends NavigationProps {
 export default function SheetList(props: ListProps) {
   const { sheets, prevAction, defaultGroupingOption } = props
   const [groupingIndex, selectGroupingIndex] = useState(defaultGroupingOption ?? 0)
+  const [openAlert, setOpenAlert] = useState<boolean>(false)
 
   const confs = [
     { state: 'instrument', fn: (sheet: Sheet) => sheet.instrument },
@@ -89,7 +92,9 @@ export default function SheetList(props: ListProps) {
                     primary={group.title}
                     secondary={`${group.sheets.length} files`}
                   />
-                  <Button onClick={() => mergePdfs(group.sheets, group.title)}>
+                  <Button onClick={() => mergePdfs(group.sheets, group.title)
+                    .catch((err) => { console.log(err); setOpenAlert(true) })
+                  }>
                     <DownloadIcon color="primary" />
                   </Button>
                 </ListItemButton>
@@ -104,6 +109,21 @@ export default function SheetList(props: ListProps) {
           prevDisabled={false}
           customNextButtonLabel={<>Get all <DownloadIcon color="primary" /></>}
         />
+        <Snackbar
+          open={openAlert}
+          autoHideDuration={2000}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          onClose={() => setOpenAlert(false)}
+        >
+          <Alert
+            onClose={() => setOpenAlert(false)}
+            severity="warning"
+            variant="filled"
+            sx={{ width: '100%' }}
+          >
+            Network error. Can't get sheets from Internet :(
+          </Alert>
+        </Snackbar>
       </div>
     </>
   )

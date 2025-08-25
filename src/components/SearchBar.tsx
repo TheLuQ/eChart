@@ -1,6 +1,7 @@
 import {
     Autocomplete,
     Box,
+    Button,
     Chip,
     FormControl,
     InputLabel,
@@ -58,6 +59,7 @@ function DesktopBar(props: ISearch) {
 function MobileBar(props: ISearch) {
     const [currentOpts, setCurrentOpts] = useState<string[]>([])
     const errorState = props.error && currentOpts.length === 0
+    const [searchOptionsOpened, setOpenSearchOptions] = useState<boolean>(false)
 
     return (
         <FormControl className="mobileInput" error={errorState}>
@@ -69,6 +71,10 @@ function MobileBar(props: ISearch) {
                 multiline
                 value={currentOpts}
                 label={props.label}
+                open={searchOptionsOpened}
+                onOpen={() => setOpenSearchOptions(true)}
+                onClose={() => setOpenSearchOptions(false)}
+                MenuProps={{ style: { maxHeight: '75%' } }}
                 onFocus={() => props.setError(false)}
                 variant="outlined"
                 renderValue={(songs) => (
@@ -100,6 +106,13 @@ function MobileBar(props: ISearch) {
                         {song}
                     </MenuItem>
                 ))}
+                <div style={{ position: 'sticky', bottom: 0 }}>
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        onClick={() => setOpenSearchOptions(false)}
+                    >Apply</Button>
+                </div>
             </Select>
         </FormControl>
     )

@@ -3,7 +3,7 @@ import type { Sheet } from './App';
 
 export async function mergePdfs(sheets: Sheet[], title: string) {
     const inputUrls = buildUrls(sheets)
-    fin(inputUrls).then(doc => saveFile(doc, title))
+    return fin(inputUrls).then(doc => saveFile(doc, title))
 }
 
 async function fin(urls: string[]) {
@@ -27,10 +27,10 @@ async function saveFile(doc: PDFDocument, title: string) {
     a.click();
 }
 
-async function mergeDocs(documents: (PDFDocument | undefined)[]) {
+async function mergeDocs(documents: PDFDocument[]) {
     const mergedPdf = await PDFDocument.create();
 
-    for (const pdfDoc of documents.flatMap(dd => dd || [])) {
+    for (const pdfDoc of documents) {
         const copiedPages = await mergedPdf.copyPages(
             pdfDoc,
             pdfDoc.getPageIndices()
@@ -42,9 +42,13 @@ async function mergeDocs(documents: (PDFDocument | undefined)[]) {
 
 async function loadUrls(urls: string[]) {
     const documents = urls.map(url => fetch(url)
-        .then(res => res.arrayBuffer())
+        .then(res => {
+            if (res.ok)
+                return res.arrayBuffer()
+            else
+                throw Error(`Issues with URL ${url}`)
+        })
         .then(PDFDocument.load)
-        .catch(() => undefined)
     )
     return await Promise.all(documents)
 }
