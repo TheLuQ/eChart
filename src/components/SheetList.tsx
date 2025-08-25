@@ -2,6 +2,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import {
   Alert,
   Button,
+  CircularProgress,
   Divider,
   FormControlLabel,
   FormLabel,
@@ -10,7 +11,8 @@ import {
   ListItemText,
   Radio,
   RadioGroup,
-  Snackbar
+  Snackbar,
+  type AlertColor
 } from '@mui/material'
 import type { Sheet, SheetGroup } from '../App'
 import { useState } from 'react'
@@ -25,10 +27,24 @@ interface ListProps extends NavigationProps {
   defaultGroupingOption?: number
 }
 
+interface Alert {
+  message: string
+  severity: AlertColor
+}
+
 export default function SheetList(props: ListProps) {
   const { sheets, prevAction, defaultGroupingOption } = props
   const [groupingIndex, selectGroupingIndex] = useState(defaultGroupingOption ?? 0)
-  const [openAlert, setOpenAlert] = useState<boolean>(false)
+  const successAlert: Alert = {
+    message: 'Sheets merged successfully!',
+    severity: 'success'
+  }
+  const errorAlert: Alert = {
+    message: 'Network error. Can\'t get sheets from Internet :(',
+    severity: 'warning'
+  }
+  const [alert, setOpenAlert] = useState<Alert | undefined>(undefined)
+  const [loadingNumber, setLoadingNumber] = useState<number>(-1)
 
   const confs = [
     { state: 'instrument', fn: (sheet: Sheet) => sheet.instrument },
@@ -85,17 +101,22 @@ export default function SheetList(props: ListProps) {
       <div hidden={groupingIndex === -1}>
         {sheets.length > 0 ? <List>
           {groupingIndex >= 0 &&
-            currentGroups.map(group => (
+            currentGroups.map((group, groupNo) => (
               <div key={group.title}>
                 <ListItemButton sx={{ justifyContent: 'space-between' }}>
                   <ListItemText
                     primary={group.title}
                     secondary={`${group.sheets.length} files`}
                   />
-                  <Button onClick={() => mergePdfs(group.sheets, group.title)
-                    .catch((err) => { console.log(err); setOpenAlert(true) })
+                  <Button onClick={() => {
+                    setLoadingNumber(groupNo)
+                    mergePdfs(group.sheets, group.title)
+                      .then(() => setOpenAlert(successAlert))
+                      .catch((err) => { console.log(err); setOpenAlert(errorAlert) })
+                      .finally(() => setLoadingNumber(-1))
+                  }
                   }>
-                    <DownloadIcon color="primary" />
+                    {loadingNumber === groupNo ? <CircularProgress size="2rem" /> : <DownloadIcon color="primary" />}
                   </Button>
                 </ListItemButton>
                 <Divider />
@@ -110,19 +131,19 @@ export default function SheetList(props: ListProps) {
           customNextButtonLabel={<>Get all <DownloadIcon color="primary" /></>}
         />
         <Snackbar
-          open={openAlert}
+          open={alert != undefined}
           autoHideDuration={2000}
           anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          onClose={() => setOpenAlert(false)}
+          onClose={() => setOpenAlert(undefined)}
         >
-          <Alert
-            onClose={() => setOpenAlert(false)}
-            severity="warning"
+          {alert && <Alert
+            onClose={() => setOpenAlert(undefined)}
+            severity={alert?.severity}
             variant="filled"
             sx={{ width: '100%' }}
           >
-            Network error. Can't get sheets from Internet :(
-          </Alert>
+            {alert?.message}
+          </Alert>}
         </Snackbar>
       </div>
     </>
