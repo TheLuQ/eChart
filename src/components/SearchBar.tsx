@@ -2,9 +2,11 @@ import {
     Autocomplete,
     Box,
     Button,
+    Checkbox,
     Chip,
     FormControl,
     InputLabel,
+    ListItemText,
     MenuItem,
     Select,
     TextField,
@@ -103,7 +105,8 @@ function MobileBar(props: ISearch) {
             >
                 {props.options.map((song) => (
                     <MenuItem key={song} value={song}>
-                        {song}
+                        <ListItemText primary={song} />
+                        <Checkbox checked={currentOpts.includes(song)} />
                     </MenuItem>
                 ))}
                 <div style={{ position: 'sticky', bottom: 0 }}>
