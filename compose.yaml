@@ -6,16 +6,13 @@ services:
         PIP_INDEX_URL: ${PIP_INDEX_URL}
     container_name: composeback
     hostname: backendservice
-    ports:
-      - 3002:5000
 
   frontend:
     build:
       context: .
       dockerfile: ./docker/front/Dockerfile
       args:
-        VITE_BACKEND: ""
         NODE_REG: ${NODE_REG}
     container_name: composefront
     ports:
-      - 4322:80
+      - ${APP_GATEWAY_IP}:4322:80

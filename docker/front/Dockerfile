@@ -6,7 +6,6 @@ RUN npm config set registry ${NODE_REG}
 
 COPY . .
 
-ARG VITE_BACKEND
 RUN npm install
 RUN npm run build
 

@@ -9,5 +9,6 @@
                 "vitest.explorer"
             ]
         }
-    }
+    },
+    "postCreateCommand": "bash ~/configs/install-dependencies.sh"
 }
