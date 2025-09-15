@@ -1,4 +1,5 @@
-FROM python:3.8-slim-buster
+ARG PYTHON_VERSION=3.8-slim-buster
+FROM python:${PYTHON_VERSION}
 
 WORKDIR /python-docker
 

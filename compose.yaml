@@ -4,6 +4,7 @@ services:
       context: ./docker/back
       args:
         PIP_INDEX_URL: ${PIP_INDEX_URL}
+        PYTHON_VERSION: ${PYTHON_VERSION}
     container_name: composeback
     hostname: backendservice
 
@@ -13,6 +14,7 @@ services:
       dockerfile: ./docker/front/Dockerfile
       args:
         NODE_REG: ${NODE_REG}
+        NGINX_VERSION: ${NGINX_VERSION}
     container_name: composefront
     ports:
       - ${APP_GATEWAY_IP}:4322:80
