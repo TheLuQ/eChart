@@ -19,8 +19,18 @@
 }
 
 .radio {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio>label {
+  margin-bottom: 0.7em;
+}
+
+.toggleGroup {
+  margin-top: 1em;
+  display: flex;
   justify-content: center;
-  margin: 0 auto;
 }
 
 .acc {

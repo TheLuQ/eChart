@@ -7,22 +7,24 @@ const customRender = (sheets: Sheet[], defaultGroupingOption?: number) =>
         <SheetList sheets={sheets} prevAction={() => { }} prevDisabled={false} defaultGroupingOption={defaultGroupingOption} />
     )
 
-it('displays default elements', () => {
-    const input: Sheet[] = []
+describe('sheet list', () => {
+    it('displays default elements', () => {
+        const input: Sheet[] = []
 
-    customRender(input)
-    const element = screen.getByText(/No results. Please redefine query/i)
+        customRender(input)
+        const element = screen.getByText(/No results. Please redefine query/i)
 
-    const submitButton = screen.getByRole('button', { name: /get all/i });
-    expect(submitButton).toBeInTheDocument()
-    expect(element).toBeInTheDocument()
-})
+        const submitButton = screen.getByRole('button', { name: /get all/i });
+        expect(submitButton).toBeInTheDocument()
+        expect(element).toBeInTheDocument()
+    })
 
-it('displays merged result by title', async () => {
-    const pattern: Sheet = { id: 'id', title: 'tit', mimeType: 'pdf', instrument: 'clarinet', kind: 'pdf', name: 'heh' }
-    const input = [pattern, { ...pattern, instrument: 'drums' }]
+    it('displays merged result by title', async () => {
+        const pattern: Sheet = { id: 'id', title: 'tit', mimeType: 'pdf', instrument: 'clarinet', kind: 'pdf', name: 'heh' }
+        const input = [pattern, { ...pattern, instrument: 'drums' }]
 
-    customRender(input, 2)
-    const resultOptions = screen.getByRole('list')
-    expect(resultOptions.children).toHaveLength(1)
+        customRender(input, 1)
+        const resultOptions = screen.getByRole('list')
+        expect(resultOptions.children).toHaveLength(1)
+    })
 })

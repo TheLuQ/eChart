@@ -4,23 +4,21 @@ import {
   Button,
   CircularProgress,
   Divider,
-  FormControlLabel,
   FormLabel,
   List,
   ListItemButton,
   ListItemText,
-  Radio,
-  RadioGroup,
   Snackbar,
+  ToggleButton,
+  ToggleButtonGroup,
   type AlertColor
 } from '@mui/material'
-import type { Sheet, SheetGroup } from '../App'
+import type { Sheet } from '../App'
 import { useState } from 'react'
 import { mergePdfs } from '../PdfReader'
 import type { NavigationProps } from './Navigation';
 import Navigation from './Navigation';
-
-type GroupingKey = (sh: Sheet) => string
+import { createGroups } from '../utils/groupSheets'
 
 interface ListProps extends NavigationProps {
   sheets: Sheet[],
@@ -48,54 +46,29 @@ export default function SheetList(props: ListProps) {
 
   const confs = [
     { state: 'instrument', fn: (sheet: Sheet) => sheet.instrument },
-    { state: 'one file', fn: (sheet: Sheet) => sheet.mimeType },
+    { state: 'instrument voice', fn: (sh: Sheet) => `${sh.instrument} ${sh.part ? sh.part : ''}` },
     { state: 'title', fn: (sheet: Sheet) => sheet.title }
   ]
   const currentConf = confs[groupingIndex]
-  const currentGroups = createGroups(sheets, currentConf.fn)
+  const currentGroups = createGroups(sheets, currentConf.fn).sort((a, b) => a.title.localeCompare(b.title))
   const getAllGroups = () => currentGroups.forEach(gr => mergePdfs(gr.sheets, gr.title))
-
-  function createGroups(sheets: Sheet[], getKey: GroupingKey) {
-    const resultMap = new Map<string, Sheet[]>()
-
-    sheets.forEach(sheet => {
-      const key = getKey(sheet)
-      const prev = resultMap.get(key) || []
-      prev.push(sheet)
-      resultMap.set(key, prev)
-    })
-
-    return Array.from(resultMap.entries())
-      .map<SheetGroup>(entry => ({
-        title: entry[0],
-        sheets: entry[1]
-      }))
-  }
 
   return (
     <>
       <div className='radio' hidden={sheets.length === 0}>
-        <FormLabel id="demo-radio-buttons-group-label">
+        <FormLabel id="grouping-label">
           Choose grouping type
         </FormLabel>
-
-        <RadioGroup
-          row
-          aria-labelledby="demo-radio-buttons-group-label"
-          name="radio-buttons-group"
+        <ToggleButtonGroup
+          aria-label="grouping-label"
           value={groupingIndex}
+          exclusive
+          onChange={(_, val) => selectGroupingIndex(val)}
         >
-          {confs.map((conf, index) => (
-            <FormControlLabel
-              key={conf.state}
-              checked={groupingIndex === index}
-              onChange={() => selectGroupingIndex(index)}
-              value={conf.state}
-              control={<Radio />}
-              label={conf.state}
-            />
-          ))}
-        </RadioGroup>
+          <ToggleButton value={0}>Instrument</ToggleButton>
+          <ToggleButton value={1}>Instrument voice</ToggleButton>
+          <ToggleButton value={2}>Title</ToggleButton>
+        </ToggleButtonGroup>
       </div>
 
       <div hidden={groupingIndex === -1}>
@@ -106,7 +79,7 @@ export default function SheetList(props: ListProps) {
                 <ListItemButton sx={{ justifyContent: 'space-between' }}>
                   <ListItemText
                     primary={group.title}
-                    secondary={`${group.sheets.length} files`}
+                    secondary={`${group.count} files`}
                   />
                   <Button onClick={() => {
                     setLoadingNumber(groupNo)

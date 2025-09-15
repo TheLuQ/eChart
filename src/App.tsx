@@ -22,12 +22,8 @@ export interface Sheet {
   name: string
   mimeType: string
   title: string,
-  instrument: string
-}
-
-export interface SheetGroup {
-  title: string
-  sheets: Sheet[]
+  instrument: string,
+  part?: number
 }
 
 function App() {
