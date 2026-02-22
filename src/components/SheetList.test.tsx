@@ -20,11 +20,20 @@ describe('sheet list', () => {
     })
 
     it('displays merged result by title', async () => {
-        const pattern: Sheet = { id: 'id', title: 'tit', mimeType: 'pdf', instrument: 'clarinet', kind: 'pdf', name: 'heh' }
+        const pattern: Sheet = { id: 'id', title: 'tit', instrument: 'clarinet', name: 'heh', name_pol: 'klarnet' }
         const input = [pattern, { ...pattern, instrument: 'drums' }]
+
+        customRender(input, 2)
+        const resultOptions = screen.getByRole('list')
+        expect(resultOptions.children).toHaveLength(1)
+    })
+
+    it('displays merged result by voice', async () => {
+        const pattern: Sheet = { id: 'id', title: 'tit', instrument: 'clarinet', name: 'heh', name_pol: 'klarnet' }
+        const input = [pattern, { ...pattern, part: 1 }]
 
         customRender(input, 1)
         const resultOptions = screen.getByRole('list')
-        expect(resultOptions.children).toHaveLength(1)
+        expect(resultOptions.children).toHaveLength(2)
     })
 })

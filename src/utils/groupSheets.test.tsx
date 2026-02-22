@@ -3,12 +3,12 @@ import type { Sheet } from '../App'
 
 describe('createGroups', () => {
     const sheets: Sheet[] = [
-        { kind: 'pdf', id: '1', name: 'A', mimeType: 'application/pdf', title: 'Song1', instrument: 'Piano' },
-        { kind: 'pdf', id: '2', name: 'B', mimeType: 'application/pdf', title: 'Song2', instrument: 'Violin' },
-        { kind: 'pdf', id: '3', name: 'C', mimeType: 'application/pdf', title: 'Song1', instrument: 'Piano' },
-        { kind: 'pdf', id: '4', name: 'D', mimeType: 'application/pdf', title: 'Song3', instrument: 'Violin' },
-        { kind: 'pdf', id: '5', name: 'E', mimeType: 'application/pdf', title: 'Song4', instrument: 'Clarinet', part: 1 },
-        { kind: 'pdf', id: '6', name: 'F', mimeType: 'application/pdf', title: 'Song4', instrument: 'Clarinet', part: 2 }
+        { id: '1', name: 'A', title: 'Song1', instrument: 'Piano', name_pol: 'Fortepian' },
+        { id: '2', name: 'B', title: 'Song2', instrument: 'Violin', name_pol: 'Skrzypce' },
+        { id: '3', name: 'C', title: 'Song1', instrument: 'Piano', name_pol: 'Fortepian' },
+        { id: '4', name: 'D', title: 'Song3', instrument: 'Violin', name_pol: 'Skrzypce' },
+        { id: '5', name: 'E', title: 'Song4', instrument: 'Clarinet', name_pol: 'Klarnet', part: 1 },
+        { id: '6', name: 'F', title: 'Song4', instrument: 'Clarinet', name_pol: 'Klarnet', part: 2 }
     ]
 
     it('groups by instrument', () => {

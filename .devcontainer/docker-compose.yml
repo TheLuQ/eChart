@@ -7,7 +7,7 @@ services:
     volumes:
       - ../:/workspace
       - node_modules:/workspace/node_modules
-      - configs:/home/node/configs
+      - configs:/configs
     command: /bin/sh -c "while sleep 1000; do :; done"
     ports:
       - 127.0.0.1:5173:5173

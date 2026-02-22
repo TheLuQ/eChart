@@ -10,5 +10,5 @@
             ]
         }
     },
-    "postCreateCommand": "bash ~/configs/install-dependencies.sh"
+    "postCreateCommand": "bash /configs/install-dependencies.sh"
 }

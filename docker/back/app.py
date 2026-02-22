@@ -35,5 +35,17 @@ def get_file2(section):
     )
     return response
 
+@cross_origin()
+@app.route("/api2/titles")
+def get_sheets():
+    result = [item.get("title") for item in conf["sheets2"]]
+
+    response = app.response_class(
+        response=json.dumps(result),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', use_reloader=False)

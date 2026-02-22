@@ -20,12 +20,13 @@ export interface ISearch {
     options: string[]
     label: string
     setFilteredResult: React.Dispatch<SetStateAction<string[]>>
+    disabled?: boolean
 }
 
 
 export default function SearchBar(props: ISearch) {
     const isMobile = navigator.userAgent.search(/Windows/i) === -1
-    return isMobile ? MobileBar(props) : DesktopBar(props)
+    return isMobile ? <MobileBar {...props} /> : <DesktopBar {...props} />
 }
 
 function DesktopBar(props: ISearch) {
@@ -43,6 +44,7 @@ function DesktopBar(props: ISearch) {
                 props.setFilteredResult(values)
             }}
             options={props.options}
+            disabled={props.disabled}
             renderInput={(params: AutocompleteRenderInputParams) => (
                 <TextField
                     sx={{ maxWidth: '500px' }}

@@ -7,9 +7,17 @@ import Search from './components/Search'
 import SheetList from './components/SheetList'
 
 export interface Instrument {
-  short_name: string
-  full_name: string
-  category: string
+  instrument_name_pol: string
+  instrument_name_en: string
+  file_name: string
+  voice: number
+  id: string
+  key?: string
+}
+
+export interface SheetGroup {
+  title: string
+  instruments: Instrument[]
 }
 
 export interface Song {
@@ -17,12 +25,12 @@ export interface Song {
 }
 
 export interface Sheet {
-  kind: string
   id: string
   name: string
-  mimeType: string
   title: string,
   instrument: string,
+  name_pol: string,
+  key?: string,
   part?: number
 }
 
