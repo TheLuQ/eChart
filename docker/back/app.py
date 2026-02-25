@@ -26,6 +26,59 @@ def get_file(id):
           return str(e)
 
 @cross_origin()
+@app.route("/api/sheets/<id>")
+def get_sheet(id):
+    result = next((item for item in conf["sheets"] if item["title"] == id), None)
+    if result is None:
+        return "Not found", 404
+
+    response = app.response_class(
+        response=json.dumps(result),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+@cross_origin()
+@app.route("/api/events/<id>")
+def get_event(id):
+    result = next((item for item in conf["events"] if item["id"] == id), None)
+    if result is None:
+        return "Not found", 404
+
+    response = app.response_class(
+        response=json.dumps(result),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+@cross_origin()
+@app.route("/api2/flattensheets/<titles>")
+def get_sheets_flat(titles):
+    ids_list = titles.split(',')
+    result = []
+    for sheet in conf["sheets"]:
+        if sheet["title"] in ids_list:
+            for instrument in sheet.get("instruments", []):
+                result.append({
+                "id": instrument.get("id"),
+                "name": instrument.get("file_name"),
+                "title": sheet.get("title"),
+                "instrument": instrument.get("instrument_name_en"),
+                "name_pol": instrument.get("instrument_name_pol"),
+                "key": instrument.get("key"),
+                "part": instrument.get("voice"),
+            })
+
+    response = app.response_class(
+        response=json.dumps(result),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+@cross_origin()
 @app.route("/api/<section>")
 def get_file2(section):
     response = app.response_class(

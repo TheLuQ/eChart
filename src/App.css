@@ -1,5 +1,6 @@
 #root {
   max-width: 1280px;
+  min-width: 35%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -21,6 +22,7 @@
 .radio {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .radio>label {

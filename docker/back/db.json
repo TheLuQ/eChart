@@ -1,4 +1,149 @@
 {
+    "events": [
+        {
+            "id": "1",
+            "title": "Spring Concert",
+            "date": "2025-04-15",
+            "time": "19:30",
+            "description": "Our annual spring concert featuring beautiful classical pieces performed by talented musicians. This event showcases the best of our repertoire including works by Bach, Mozart, and Beethoven. Join us for an evening of exceptional music in our acoustically perfect venue.",
+            "location": "Main Auditorium",
+            "agenda": [
+                {
+                    "time": "19:30",
+                    "title": "Welcome and Introduction",
+                    "description": "Opening remarks and event overview"
+                },
+                {
+                    "time": "19:45",
+                    "title": "Bach - Brandenburg Concerto No. 3",
+                    "description": "Performed by the chamber orchestra"
+                },
+                {
+                    "time": "20:15",
+                    "title": "Intermission",
+                    "description": "15-minute break with refreshments"
+                },
+                {
+                    "time": "20:30",
+                    "title": "Mozart - Piano Concerto No. 21",
+                    "description": "Solo piano performance"
+                },
+                {
+                    "time": "21:00",
+                    "title": "Beethoven - Symphony No. 5 (1st Movement)",
+                    "description": "Full orchestra finale"
+                },
+                {
+                    "time": "21:30",
+                    "title": "Closing and Thank You"
+                }
+            ],
+            "titles": [
+                "Dusty Trails",
+                "The Kerry Bog"
+            ],
+            "tags": [
+                "Classical",
+                "Concert",
+                "Spring"
+            ]
+        },
+        {
+            "id": "2",
+            "title": "Jazz Night",
+            "date": "2025-05-20",
+            "time": "20:00",
+            "description": "An intimate evening of smooth jazz and blues featuring local musicians and special guest performers. Experience the soulful sounds of jazz in a cozy setting perfect for music lovers.",
+            "location": "Community Center",
+            "agenda": [
+                {
+                    "time": "20:00",
+                    "title": "Doors Open",
+                    "description": "Seating and welcome drinks"
+                },
+                {
+                    "time": "20:30",
+                    "title": "Opening Act",
+                    "description": "Local jazz trio performance"
+                },
+                {
+                    "time": "21:00",
+                    "title": "Main Performance",
+                    "description": "Featured jazz ensemble with special guests"
+                },
+                {
+                    "time": "22:00",
+                    "title": "Jam Session",
+                    "description": "Open stage for audience participation"
+                },
+                {
+                    "time": "23:00",
+                    "title": "Event Wrap-up"
+                }
+            ],
+            "titles": [
+                "Dusty Trails"
+            ],
+            "tags": [
+                "Jazz",
+                "Blues",
+                "Evening"
+            ]
+        },
+        {
+            "id": "3",
+            "title": "Student Recital",
+            "date": "2025-06-10",
+            "time": "15:00",
+            "description": "A showcase of our talented students performing solo pieces and ensemble works. This recital highlights the progress and achievements of our music students across various instruments and skill levels.",
+            "location": "Music Hall",
+            "agenda": [
+                {
+                    "time": "15:00",
+                    "title": "Welcome and Introductions",
+                    "description": "Opening ceremony and program overview"
+                },
+                {
+                    "time": "15:15",
+                    "title": "Piano Performances",
+                    "description": "Solo piano pieces by intermediate students"
+                },
+                {
+                    "time": "15:45",
+                    "title": "String Quartet",
+                    "description": "Chamber music ensemble performance"
+                },
+                {
+                    "time": "16:15",
+                    "title": "Short Break",
+                    "description": "10-minute intermission"
+                },
+                {
+                    "time": "16:25",
+                    "title": "Vocal Performances",
+                    "description": "Solo and choir performances"
+                },
+                {
+                    "time": "16:50",
+                    "title": "Awards and Recognition",
+                    "description": "Student achievement ceremony"
+                },
+                {
+                    "time": "17:00",
+                    "title": "Reception",
+                    "description": "Meet the performers and refreshments"
+                }
+            ],
+            "titles": [
+                "The Kerry Bog"
+            ],
+            "tags": [
+                "Student",
+                "Recital",
+                "Performance"
+            ]
+        }
+    ],
     "sheets": [
         {
             "title": "Dusty Trails",

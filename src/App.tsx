@@ -5,6 +5,7 @@ import {
 } from '@mui/material'
 import Search from './components/Search'
 import SheetList from './components/SheetList'
+import Navigation from './components/Navigation'
 
 export interface Instrument {
   instrument_name_pol: string
@@ -48,11 +49,16 @@ function App() {
   )
 
   const secondStep = (
-    <SheetList
-      sheets={filteredSheets}
-      prevAction={() => setStep(prev => prev - 1)}
-      prevDisabled={false}
-    />
+    <>
+      <SheetList
+        sheets={filteredSheets}
+      />
+      <Navigation
+        prevAction={() => setStep(prev => prev - 1)}
+        nextAction={() => { }} //to update  add disabled next action
+        prevDisabled={false}
+      />
+    </>
   )
 
   const steps = [firstStep, secondStep]

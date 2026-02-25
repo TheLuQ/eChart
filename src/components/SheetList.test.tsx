@@ -4,7 +4,7 @@ import SheetList from "./SheetList";
 
 const customRender = (sheets: Sheet[], defaultGroupingOption?: number) =>
     render(
-        <SheetList sheets={sheets} prevAction={() => { }} prevDisabled={false} defaultGroupingOption={defaultGroupingOption} />
+        <SheetList sheets={sheets} defaultGroupingOption={defaultGroupingOption} />
     )
 
 describe('sheet list', () => {
@@ -14,8 +14,6 @@ describe('sheet list', () => {
         customRender(input)
         const element = screen.getByText(/No results. Please redefine query/i)
 
-        const submitButton = screen.getByRole('button', { name: /get all/i });
-        expect(submitButton).toBeInTheDocument()
         expect(element).toBeInTheDocument()
     })
 
