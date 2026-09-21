@@ -11,7 +11,7 @@ async function fin(urls: string[]) {
 }
 
 function buildUrls(sheets: Sheet[]) {
-    return sheets.map(sheet => `${import.meta.env.VITE_BACKEND}/files/${sheet.id}`)
+    return sheets.map(sheet => sheet.url)
 }
 
 async function saveFile(doc: PDFDocument, title: string) {

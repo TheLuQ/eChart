@@ -26,13 +26,14 @@ export interface Song {
 }
 
 export interface Sheet {
-  id: string
-  name: string
+  file_id: string
+  file_name: string
   title: string,
-  instrument: string,
-  name_pol: string,
+  instrument_name_en: string,
+  instrument_name_pol: string,
   key?: string,
-  part?: number
+  voice?: number,
+  url: string
 }
 
 function App() {

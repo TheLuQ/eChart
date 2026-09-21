@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask
-from flask import send_file
+from flask import Flask, request, send_file, jsonify
 import os.path
 from flask_cors import CORS, cross_origin
 import flask.json
@@ -26,18 +25,31 @@ def get_file(id):
           return str(e)
 
 @cross_origin()
-@app.route("/api/sheets/<id>")
-def get_sheet(id):
-    result = next((item for item in conf["sheets"] if item["title"] == id), None)
-    if result is None:
-        return "Not found", 404
+@app.route("/api/sheets", methods=["GET"])
+@app.route("/api/sheets/<id>", methods=["GET"])
+def get_sheet(id=None):
+    group_keys = request.args.getlist("group_key")
 
-    response = app.response_class(
-        response=json.dumps(result),
-        status=200,
-        mimetype='application/json'
-    )
-    return response
+    if group_keys:
+        selected = set(group_keys)
+        result = [
+            item for item in conf["sheets"]
+            if item.get("group_key") in selected or item.get("title") in selected
+        ]
+        if not result:
+            return "Not found", 404
+        return jsonify(result)
+
+    if id is not None:
+        result = [
+            item for item in conf["sheets"]
+            if item.get("group_key") == id or item.get("title") == id
+        ]
+        if not result:
+            return "Not found", 404
+        return jsonify(result)
+
+    return jsonify(conf["sheets"])
 
 @cross_origin()
 @app.route("/api/events/<id>")

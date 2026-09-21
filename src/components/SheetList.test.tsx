@@ -18,8 +18,8 @@ describe('sheet list', () => {
     })
 
     it('displays merged result by title', async () => {
-        const pattern: Sheet = { id: 'id', title: 'tit', instrument: 'clarinet', name: 'heh', name_pol: 'klarnet' }
-        const input = [pattern, { ...pattern, instrument: 'drums' }]
+        const pattern: Sheet = { file_id: 'id', title: 'tit', instrument_name_en: 'clarinet', file_name: 'heh', instrument_name_pol: 'klarnet', url: 'tofill' }
+        const input = [pattern, { ...pattern, instrument_name_en: 'drums' }]
 
         customRender(input, 2)
         const resultOptions = screen.getByRole('list')
@@ -27,8 +27,8 @@ describe('sheet list', () => {
     })
 
     it('displays merged result by voice', async () => {
-        const pattern: Sheet = { id: 'id', title: 'tit', instrument: 'clarinet', name: 'heh', name_pol: 'klarnet' }
-        const input = [pattern, { ...pattern, part: 1 }]
+        const pattern: Sheet = { file_id: 'id', title: 'tit', instrument_name_en: 'clarinet', file_name: 'heh', instrument_name_pol: 'klarnet', url: 'tofill' }
+        const input = [pattern, { ...pattern, voice: 1 }]
 
         customRender(input, 1)
         const resultOptions = screen.getByRole('list')

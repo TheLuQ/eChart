@@ -33,7 +33,7 @@ export interface EventDetails {
     description: string
     location: string
     agenda: AgendaItem[]
-    titles: string[]
+    group_keys: string[]
     tags?: string[]
 }
 
@@ -71,8 +71,15 @@ function a11yProps(index: number) {
 }
 
 async function getSheets(titles: string[]): Promise<Sheet[]> {
-    const titlesParam = titles.join(',')
-    return fetch(`${import.meta.env.VITE_BACKEND}/api2/flattensheets/${encodeURIComponent(titlesParam)}`)
+    const queryParams = new URLSearchParams()
+    titles.forEach((title) => queryParams.append('group_key', title))
+
+    const queryString = queryParams.toString()
+    const url = `/api/sheets${queryString ? `?${queryString}` : ''}`
+
+    return fetch(url, {
+        method: 'GET'
+    })
         .then(res => res.json() as Promise<Sheet[]>)
 }
 
@@ -88,12 +95,15 @@ function Event() {
     }
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_BACKEND}/api/events/${eventId}`)
+        fetch(`/api/events/${eventId}`)
             .then(res => res.json())
-            .then(data => { setEvent(data as EventDetails); return data as EventDetails })
-            .then(eventData => getSheets(eventData.titles).then(sheetsData => setSheets(sheetsData)))
-            .then(() => setLoading(false))
-            .catch(() => setEvent(null))
+            .then(async (eventData) => {
+                const sheetsData = await getSheets(eventData.group_keys ?? [])
+                setEvent(eventData)
+                setSheets(sheetsData)
+                setLoading(false)
+            })
+            .catch(() => setLoading(false))
     }, [eventId])
 
     if (loading) {

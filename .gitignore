@@ -50,6 +50,9 @@ web_modules/
 # Optional npm cache directory
 .npm
 
+# Node artifactory configuration
+.npmrc
+
 # Optional eslint cache
 .eslintcache
 
@@ -139,4 +142,4 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # mockpdfs
-docker/back/mockpdfs
+backend-mock/mockpdfs

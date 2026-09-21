@@ -14,7 +14,7 @@ function Events() {
     const [events, setEvents] = useState<Event[]>([])
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_BACKEND}/api/events`)
+        fetch(`/api/events`)
             .then(res => res.json())
             .then(data => setEvents(data as Event[]))
             .catch((res) => console.error('Failed to fetch events:', res))
@@ -49,7 +49,7 @@ function Events() {
                                         <Button
                                             size="small"
                                             component={Link}
-                                            to={`/event/${event.id}`}
+                                            to={`/events/${event.id}`}
                                         >
                                             View Details
                                         </Button>

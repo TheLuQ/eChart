@@ -4,30 +4,12 @@ import React, {
   useState,
   type SetStateAction
 } from "react"
-import type { Sheet, SheetGroup } from "../App"
+import type { Sheet } from "../App"
 import Navigation, { type NavigationProps } from "./Navigation"
 import SearchBar from "./SearchBar"
 
 interface MyProps extends NavigationProps {
   setFilteredSheets: React.Dispatch<SetStateAction<Sheet[]>>
-}
-
-function flattenSheets(sheets: SheetGroup[]): Sheet[] {
-  const result: Sheet[] = []
-  sheets.forEach(sh => {
-    sh.instruments.forEach(instr => {
-      result.push({
-        id: instr.id,
-        name: instr.file_name,
-        title: sh.title,
-        instrument: instr.instrument_name_en,
-        name_pol: instr.instrument_name_pol,
-        key: instr.key,
-        part: instr.voice
-      })
-    })
-  })
-  return result
 }
 
 export default function Search(props: MyProps) {
@@ -40,14 +22,14 @@ export default function Search(props: MyProps) {
   const [errState, setErrState] = useState<boolean[]>([false, false])
   const instruments = useMemo(() => new Set(
     sheets
-      .map(instr => instr.instrument)
+      .map(instr => instr.instrument_name_en)
       .sort()
   ), [sheets])
 
   // Filter logic
   const filterSheetFn = (sh: Sheet) => (
     selSongs.includes(sh.title) &&
-    selInstruments.includes(sh.instrument)
+    selInstruments.includes(sh.instrument_name_en)
   )
   const filtSheets = sheets.filter(filterSheetFn)
   const canSubmit = () => {
@@ -58,9 +40,9 @@ export default function Search(props: MyProps) {
 
   // Data fetching effect
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND}/api/sheets`)
+    fetch(`/api/sheets`)
       .then(res => res.json())
-      .then(data => { setSheets(flattenSheets(data)) })
+      .then(data => { setSheets(data) })
   }, [])
 
   return (

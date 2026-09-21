@@ -36,7 +36,7 @@ createRoot(document.getElementById('root')!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/event/:eventId" element={<Event />} />
+          <Route path="/events/:eventId" element={<Event />} />
         </Routes>
       </BrowserRouter>
     </StrictMode>

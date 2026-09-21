@@ -41,8 +41,8 @@ export default function SheetList(props: ListProps) {
   const [loadingNumber, setLoadingNumber] = useState<number>(-1)
 
   const confs = [
-    { state: 'instrument', fn: (sheet: Sheet) => sheet.instrument },
-    { state: 'instrument voice', fn: (sh: Sheet) => `${sh.instrument} ${sh.part ? sh.part : ''}` },
+    { state: 'instrument', fn: (sheet: Sheet) => sheet.instrument_name_en },
+    { state: 'instrument voice', fn: (sh: Sheet) => `${sh.instrument_name_en} ${sh.voice ? sh.voice : ''}` },
     { state: 'title', fn: (sheet: Sheet) => sheet.title }
   ]
   const [groupingIndex, selectGroupingIndex] = useState(defaultGroupingOption ?? 0)

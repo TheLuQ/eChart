@@ -1,20 +1,32 @@
 services:
   backend:
     build:
-      context: ./docker/back
+      context: .
+      dockerfile: Dockerfile.test.backend
       args:
         PIP_INDEX_URL: ${PIP_INDEX_URL}
         PYTHON_VERSION: ${PYTHON_VERSION}
     container_name: composeback
     hostname: backendservice
+    networks:
+      - echart-backend_devcontainer_default
 
   frontend:
     build:
       context: .
-      dockerfile: ./docker/front/Dockerfile
+      dockerfile: Dockerfile
       args:
-        NODE_REG: ${NODE_REG}
+        NODE_VERSION: ${NODE_VERSION}
         NGINX_VERSION: ${NGINX_VERSION}
+        API_ENDPOINT: ${API_ENDPOINT}
     container_name: composefront
+    env_file:
+      - .env
     ports:
-      - ${APP_GATEWAY_IP}:4322:80
+      - 127.0.0.1:4322:8080
+    networks:
+      - echart-backend_devcontainer_default
+
+networks:
+  echart-backend_devcontainer_default:
+    external: true

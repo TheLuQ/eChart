@@ -4,7 +4,7 @@ import type { Sheet } from "../App";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 import { setupRoutes } from "../setupTests";
-import * as  db from '../../docker/back/db.json'
+import * as  db from '../../db.json'
 
 beforeAll(() => {
     vi.stubEnv('VITE_BACKEND', 'http://localhost:3003')
@@ -38,6 +38,6 @@ it('filters sheets with proper song and instrument', async () => {
     await userEvent.click(screen.getByText(/tuba/i))
     await userEvent.click(screen.getByText(/next/i))
     const result = resultFn.mock.lastCall?.[0] as Sheet[]
-    expect(result[0].instrument).toEqual('tuba')
+    expect(result[0].instrument_name_en).toEqual('tuba')
     expect(result[0].title).toEqual('Dusty Trails')
 })
