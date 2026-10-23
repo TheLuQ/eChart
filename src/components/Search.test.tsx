@@ -1,43 +1,48 @@
 import Search from "./Search";
-import { type Dispatch, type SetStateAction } from "react";
 import type { Sheet } from "../App";
-import { fireEvent, render, screen } from "@testing-library/react";
-import userEvent from '@testing-library/user-event'
-import { setupRoutes } from "../setupTests";
-import * as  db from '../../db.json'
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
 
-beforeAll(() => {
-    vi.stubEnv('VITE_BACKEND', 'http://localhost:3003')
-    setupRoutes(db)
-})
+const sheets = [{
+    title: "Dusty Trails",
+    instrument_name_en: "tuba",
+    group_key: "dusty-trails"
+}];
+const titles = [{ group_key: "dusty-trails", title: "Dusty Trails" }];
+
+beforeEach(() => {
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => Promise.resolve({
+        json: async () => String(input).includes("/titles") ? { titles } : sheets
+    } as Response)));
+});
 
 afterAll(() => {
-    vi.unstubAllEnvs()
-})
+    vi.unstubAllGlobals();
+});
 
-const renderSearch = (setFilteredSheets?: Dispatch<SetStateAction<Sheet[]>>, prevAction?: () => void, prevDisabled?: boolean) =>
+it("filters sheets for the selected song", async () => {
+    const setFilteredSheets = vi.fn();
     render(
-        <Search
-            setFilteredSheets={setFilteredSheets ?? (() => [])}
-            prevAction={prevAction ?? (() => [])}
-            prevDisabled={prevDisabled ?? false}
-        />
-    )
+        <MemoryRouter initialEntries={["/bands/gos"]}>
+            <Routes>
+                <Route path="/bands/:bandId" element={
+                    <Search
+                        setFilteredSheets={setFilteredSheets}
+                        prevAction={() => { }}
+                        prevDisabled={true}
+                    />
+                } />
+            </Routes>
+        </MemoryRouter>
+    );
 
-it('filters sheets with proper song and instrument', async () => {
-    const resultFn = vi.fn()
-    renderSearch(resultFn)
+    await userEvent.click(screen.getByRole("combobox", { name: /select songs/i }));
+    await userEvent.click(await screen.findByRole("option", { name: /dusty trails/i }));
+    await userEvent.click(screen.getByRole("button", { name: "Apply" }));
+    await userEvent.click(screen.getByText(/next/i));
 
-    await userEvent.click(screen.getAllByRole('combobox')[0])
-        .then(() => screen.findByText(/dusty trails/i))
-        .then(element => userEvent.click(element))
-
-    fireEvent.keyDown(document.activeElement!, { key: 'Escape', code: 'Escape' })
-
-    await userEvent.click(screen.getAllByRole('combobox')[1])
-    await userEvent.click(screen.getByText(/tuba/i))
-    await userEvent.click(screen.getByText(/next/i))
-    const result = resultFn.mock.lastCall?.[0] as Sheet[]
-    expect(result[0].instrument_name_en).toEqual('tuba')
-    expect(result[0].title).toEqual('Dusty Trails')
-})
+    const result = setFilteredSheets.mock.lastCall?.[0] as Sheet[];
+    expect(result[0].instrument_name_en).toEqual("tuba");
+    expect(result[0].title).toEqual("Dusty Trails");
+});

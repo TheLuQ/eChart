@@ -14,10 +14,15 @@ import {
 } from "@mui/material";
 import { useState, type SetStateAction } from "react";
 
+export interface SearchOption {
+    group_key: string
+    title: string
+}
+
 export interface ISearch {
     error: boolean
     setError: React.Dispatch<SetStateAction<boolean>>
-    options: string[]
+    options: SearchOption[]
     label: string
     setFilteredResult: React.Dispatch<SetStateAction<string[]>>
     disabled?: boolean
@@ -30,7 +35,7 @@ export default function SearchBar(props: ISearch) {
 }
 
 function DesktopBar(props: ISearch) {
-    const [currentOpts, setCurrentOpts] = useState<string[]>([])
+    const [currentOpts, setCurrentOpts] = useState<SearchOption[]>([])
     const errorState = props.error && currentOpts.length === 0
 
     return (
@@ -39,9 +44,11 @@ function DesktopBar(props: ISearch) {
             value={currentOpts}
             className="input"
             disableCloseOnSelect={true}
+            getOptionLabel={(option) => option.title}
+            isOptionEqualToValue={(option, value) => option.group_key === value.group_key}
             onChange={(_, values) => {
                 setCurrentOpts(values)
-                props.setFilteredResult(values)
+                props.setFilteredResult(values.map((value) => value.group_key))
             }}
             options={props.options}
             disabled={props.disabled}
@@ -67,11 +74,11 @@ function MobileBar(props: ISearch) {
 
     return (
         <FormControl className="mobileInput" error={errorState}>
-            <InputLabel id={props.label}>{props.label}</InputLabel>
+            <InputLabel id="select-songs-label">{props.label}</InputLabel>
             <Select
                 sx={{ maxWidth: '500px' }}
                 multiple
-                id={props.label}
+                id="select-songs-label"
                 multiline
                 value={currentOpts}
                 label={props.label}
@@ -85,7 +92,7 @@ function MobileBar(props: ISearch) {
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                         {songs.map((song) => (
                             <Chip
-                                label={song}
+                                label={props.options.find((option) => option.group_key === song)?.title ?? song}
                                 key={song}
                                 onDelete={() => {
                                     setCurrentOpts((prev) => prev.filter((s) => s !== song))
@@ -106,9 +113,9 @@ function MobileBar(props: ISearch) {
                 }}
             >
                 {props.options.map((song) => (
-                    <MenuItem key={song} value={song}>
-                        <ListItemText primary={song} />
-                        <Checkbox checked={currentOpts.includes(song)} />
+                    <MenuItem key={song.group_key} value={song.group_key}>
+                        <ListItemText primary={song.title} />
+                        <Checkbox checked={currentOpts.includes(song.group_key)} />
                     </MenuItem>
                 ))}
                 <div style={{ position: 'sticky', bottom: 0 }}>

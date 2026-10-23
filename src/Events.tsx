@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Paper, Typography, Box, Card, CardContent, CardActions, Button } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export interface Event {
     id: string
@@ -11,14 +11,15 @@ export interface Event {
 }
 
 function Events() {
+    const { bandId } = useParams<{ bandId: string }>()
     const [events, setEvents] = useState<Event[]>([])
 
     useEffect(() => {
-        fetch(`/api/events`)
+        fetch(`/api/bands/${bandId}/events`)
             .then(res => res.json())
             .then(data => setEvents(data as Event[]))
             .catch((res) => console.error('Failed to fetch events:', res))
-    }, [])
+    }, [bandId])
 
     return (
         <>
@@ -49,7 +50,7 @@ function Events() {
                                         <Button
                                             size="small"
                                             component={Link}
-                                            to={`/events/${event.id}`}
+                                            to={`/bands/${bandId}/events/${event.id}`}
                                         >
                                             View Details
                                         </Button>

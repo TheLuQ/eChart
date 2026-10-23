@@ -14,6 +14,7 @@ COPY index.html ./
 COPY public ./public
 COPY src ./src
 COPY db.json .
+COPY instruments.json .
 
 RUN npm run build
 

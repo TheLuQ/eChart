@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"./docker/back/app.py ./docker/back/db.json\" \"vite\"",
+    "dev": "concurrently \"node --env-file=.env.development backend-mock.mjs\" \"vite\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

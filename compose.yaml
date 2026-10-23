@@ -4,10 +4,13 @@ services:
       context: .
       dockerfile: Dockerfile.test.backend
       args:
-        PIP_INDEX_URL: ${PIP_INDEX_URL}
-        PYTHON_VERSION: ${PYTHON_VERSION}
+        NODE_BASE_IMAGE: ${NODE_BASE_IMAGE}
+    volumes:
+      - mockpdfs:/files
     container_name: composeback
     hostname: backendservice
+    ports:
+      - 127.0.0.1::5000
     networks:
       - echart-backend_devcontainer_default
 
@@ -29,4 +32,7 @@ services:
 
 networks:
   echart-backend_devcontainer_default:
+    external: true
+volumes:
+  mockpdfs:
     external: true

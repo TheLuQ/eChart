@@ -1,7 +1,14 @@
 {
+    "bands": [
+        {
+            "id": "gos",
+            "name": "GOS"
+        }
+    ],
     "events": [
         {
             "id": "1",
+            "bandId": "gos",
             "title": "Spring Concert",
             "date": "2025-04-15",
             "time": "19:30",
@@ -39,8 +46,8 @@
                 }
             ],
             "group_keys": [
-                "Dusty Trails",
-                "The Kerry Bog"
+                "dusty-trails",
+                "the-kerry-bog"
             ],
             "tags": [
                 "Classical",
@@ -50,6 +57,7 @@
         },
         {
             "id": "2",
+            "bandId": "gos",
             "title": "Jazz Night",
             "date": "2025-05-20",
             "time": "20:00",
@@ -82,7 +90,7 @@
                 }
             ],
             "group_keys": [
-                "Dusty Trails"
+                "dusty-trails"
             ],
             "tags": [
                 "Jazz",
@@ -92,6 +100,7 @@
         },
         {
             "id": "3",
+            "bandId": "gos",
             "title": "Student Recital",
             "date": "2025-06-10",
             "time": "15:00",
@@ -135,7 +144,7 @@
                 }
             ],
             "group_keys": [
-                "The Kerry Bog"
+                "the-kerry-bog"
             ],
             "tags": [
                 "Student",
@@ -147,322 +156,352 @@
     "sheets": [
         {
             "file_id": "1hCaMGMXmzlziEpn93uXGe7QTWZHW1Sni",
+            "bandId": "gos",
             "file_name": "Dusty Trails - congas.pdf",
             "title": "Dusty Trails",
-            "group_key": "The Kerry Bog",
+            "group_key": "dusty-trails",
             "instrument_name_en": "congas",
             "instrument_name_pol": "kongi",
             "voice": 1,
-            "url": "/files/1hCaMGMXmzlziEpn93uXGe7QTWZHW1Sni"
+            "url": "/files/gos/1hCaMGMXmzlziEpn93uXGe7QTWZHW1Sni.pdf"
         },
         {
             "file_id": "1ontDQWqHtkLo2JC_fXzx1QYBnE_OB-Dp",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Tuba.pdf",
             "title": "Dusty Trails",
-            "group_key": "The Kerry Bog",
+            "group_key": "dusty-trails",
             "instrument_name_en": "tuba",
             "instrument_name_pol": "tuba",
             "voice": 1,
             "key": "C",
-            "url": "/files/1ontDQWqHtkLo2JC_fXzx1QYBnE_OB-Dp"
+            "url": "/files/gos/1ontDQWqHtkLo2JC_fXzx1QYBnE_OB-Dp.pdf"
         },
         {
             "file_id": "17ci4hKWlNwZkZDaaZVNH4G-gGwJQtXWL",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Tenorsx:Basscl.pdf",
             "title": "Dusty Trails",
-            "group_key": "The Kerry Bog",
+            "group_key": "dusty-trails",
             "instrument_name_en": "tenor saxophone",
             "instrument_name_pol": "saksofon tenorowy",
             "voice": 1,
             "key": "Bb",
-            "url": "/files/17ci4hKWlNwZkZDaaZVNH4G-gGwJQtXWL"
+            "url": "/files/gos/17ci4hKWlNwZkZDaaZVNH4G-gGwJQtXWL.pdf"
         },
         {
             "file_id": "1pRm9SZkNn2NhBTxMio45LPd84EqYAFUb",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Oboe.pdf",
             "title": "Dusty Trails",
-            "group_key": "The Kerry Bog",
+            "group_key": "dusty-trails",
             "instrument_name_en": "oboe",
             "instrument_name_pol": "obój",
             "voice": 1,
             "key": "C",
-            "url": "/files/1pRm9SZkNn2NhBTxMio45LPd84EqYAFUb"
+            "url": "/files/gos/1pRm9SZkNn2NhBTxMio45LPd84EqYAFUb.pdf"
         },
         {
             "file_id": "1QJh_EhS_lQYX_GgRyYc953Fl6v467RS-",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Bsax.pdf",
             "title": "Dusty Trails",
-            "group_key": "The Kerry Bog",
+            "group_key": "dusty-trails",
             "instrument_name_en": "baritone saxophone",
             "instrument_name_pol": "saksofon barytonowy",
             "voice": 1,
             "key": "Eb",
-            "url": "/files/1QJh_EhS_lQYX_GgRyYc953Fl6v467RS-"
+            "url": "/files/gos/1QJh_EhS_lQYX_GgRyYc953Fl6v467RS-.pdf"
         },
         {
             "file_id": "10QtvKAe7y1BxCZoianbaYH4H7zV4sm6N",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Score.pdf",
             "title": "Dusty Trails",
-            "group_key": "The Kerry Bog",
+            "group_key": "dusty-trails",
             "instrument_name_en": "score",
             "instrument_name_pol": "partytura",
-            "url": "/files/10QtvKAe7y1BxCZoianbaYH4H7zV4sm6N"
+            "url": "/files/gos/10QtvKAe7y1BxCZoianbaYH4H7zV4sm6N.pdf"
         },
         {
             "file_id": "1ZvirdXwL5q3Hu9iSNQRmIpBUrpdKoeGI",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Percussion 2.pdf",
             "title": "Dusty Trails",
-            "group_key": "The Kerry Bog",
+            "group_key": "dusty-trails",
             "instrument_name_en": "snare drum",
             "instrument_name_pol": "werbel",
             "voice": 2,
-            "url": "/files/1ZvirdXwL5q3Hu9iSNQRmIpBUrpdKoeGI"
+            "url": "/files/gos/1ZvirdXwL5q3Hu9iSNQRmIpBUrpdKoeGI.pdf"
         },
         {
             "file_id": "1no_ZmmRJelVaoUtKAp5mWvAYh8tPCry-",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Percussion 1.pdf",
             "title": "Dusty Trails",
-            "group_key": "The Kerry Bog",
+            "group_key": "dusty-trails",
             "instrument_name_en": "snare drum",
             "instrument_name_pol": "werbel",
             "voice": 1,
-            "url": "/files/1no_ZmmRJelVaoUtKAp5mWvAYh8tPCry-"
+            "url": "/files/gos/1no_ZmmRJelVaoUtKAp5mWvAYh8tPCry-.pdf"
         },
         {
             "file_id": "180AKqI253DzcfYjDdzCq2A8hP3arOZPs",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Trombone.pdf",
             "title": "Dusty Trails",
-            "group_key": "Dusty Trails",
+            "group_key": "dusty-trails",
             "instrument_name_en": "trombone",
             "instrument_name_pol": "puzon",
             "voice": 1,
             "key": "C",
-            "url": "/files/180AKqI253DzcfYjDdzCq2A8hP3arOZPs"
+            "url": "/files/gos/180AKqI253DzcfYjDdzCq2A8hP3arOZPs.pdf"
         },
         {
             "file_id": "1FOlGu6W8zYBygJgdfD790Ziv-l5zx0MO",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Clarinet in Bb.pdf",
             "title": "Dusty Trails",
-            "group_key": "Dusty Trails",
+            "group_key": "dusty-trails",
             "instrument_name_en": "clarinet",
             "instrument_name_pol": "klarnet",
             "voice": 1,
             "key": "Bb",
-            "url": "/files/1FOlGu6W8zYBygJgdfD790Ziv-l5zx0MO"
+            "url": "/files/gos/1FOlGu6W8zYBygJgdfD790Ziv-l5zx0MO.pdf"
         },
         {
             "file_id": "1k_KoW1DYJ8DTgfoVWAMxxEUyO7evDYB_",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Horn in F.pdf",
             "title": "Dusty Trails",
-            "group_key": "Dusty Trails",
+            "group_key": "dusty-trails",
             "instrument_name_en": "french horn",
             "instrument_name_pol": "waltornia",
             "voice": 1,
             "key": "F",
-            "url": "/files/1k_KoW1DYJ8DTgfoVWAMxxEUyO7evDYB_"
+            "url": "/files/gos/1k_KoW1DYJ8DTgfoVWAMxxEUyO7evDYB_.pdf"
         },
         {
             "file_id": "164WhGZGwRlAaMYISPhM3m3ZIC6NafInk",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Alto Sax..pdf",
             "title": "Dusty Trails",
-            "group_key": "Dusty Trails",
+            "group_key": "dusty-trails",
             "instrument_name_en": "alto saxophone",
             "instrument_name_pol": "saksofon altowy",
             "voice": 1,
             "key": "Eb",
-            "url": "/files/164WhGZGwRlAaMYISPhM3m3ZIC6NafInk"
+            "url": "/files/gos/164WhGZGwRlAaMYISPhM3m3ZIC6NafInk.pdf"
         },
         {
             "file_id": "18Mym4HHkj-cYE1I8gxWnoDK7Xa30lOPr",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Trumpet in Bb.pdf",
             "title": "Dusty Trails",
-            "group_key": "Dusty Trails",
+            "group_key": "dusty-trails",
             "instrument_name_en": "trumpet",
             "instrument_name_pol": "trąbka",
             "voice": 1,
             "key": "Bb",
-            "url": "/files/18Mym4HHkj-cYE1I8gxWnoDK7Xa30lOPr"
+            "url": "/files/gos/18Mym4HHkj-cYE1I8gxWnoDK7Xa30lOPr.pdf"
         },
         {
             "file_id": "13UBDDseUmyOZJEQc6Gcy81BZPW5jpGgr",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Flute.pdf",
             "title": "Dusty Trails",
-            "group_key": "Dusty Trails",
+            "group_key": "dusty-trails",
             "instrument_name_en": "flute",
             "instrument_name_pol": "flet",
             "voice": 1,
             "key": "C",
-            "url": "/files/13UBDDseUmyOZJEQc6Gcy81BZPW5jpGgr"
+            "url": "/files/gos/13UBDDseUmyOZJEQc6Gcy81BZPW5jpGgr.pdf"
         },
         {
             "file_id": "1VGkkryp0NS_7onxyjuV9jX-GzIIxA_UR",
+            "bandId": "gos",
             "file_name": "Dusty Trails - Bells.pdf",
             "title": "Dusty Trails",
-            "group_key": "Dusty Trails",
+            "group_key": "dusty-trails",
             "instrument_name_en": "glockenspiel",
             "instrument_name_pol": "dzwonki",
             "voice": 1,
             "key": "C",
-            "url": "/files/1VGkkryp0NS_7onxyjuV9jX-GzIIxA_UR"
+            "url": "/files/gos/1VGkkryp0NS_7onxyjuV9jX-GzIIxA_UR.pdf"
         },
         {
             "file_id": "1T4MIPYlNllCEMTdMAKSKumUu0xMTDY02",
+            "bandId": "gos",
             "file_name": " The Kerry Bog - Score.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "score",
             "instrument_name_pol": "partytura",
-            "url": "/files/1T4MIPYlNllCEMTdMAKSKumUu0xMTDY02"
+            "url": "/files/gos/1T4MIPYlNllCEMTdMAKSKumUu0xMTDY02.pdf"
         },
         {
             "file_id": "12Lsun8EqmZiTJftzPmeLCYNHS69lpQ8c",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - Horn in F.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "french horn",
             "instrument_name_pol": "waltornia",
             "key": "F",
-            "url": "/files/12Lsun8EqmZiTJftzPmeLCYNHS69lpQ8c"
+            "url": "/files/gos/12Lsun8EqmZiTJftzPmeLCYNHS69lpQ8c.pdf"
         },
         {
             "file_id": "1euLp9_kLhn-jkalTQ_VYvIW03dzLDOo1",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - tenor:bass drum.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "bass drum",
             "instrument_name_pol": "bęben basowy",
             "voice": 1,
-            "url": "/files/1euLp9_kLhn-jkalTQ_VYvIW03dzLDOo1"
+            "url": "/files/gos/1euLp9_kLhn-jkalTQ_VYvIW03dzLDOo1.pdf"
         },
         {
             "file_id": "1YMvRcTtg6BPkx8vFz-GJ4-r1qPMVP0zN",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - trombone.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "trombone",
             "instrument_name_pol": "puzon",
             "voice": 1,
             "key": "C",
-            "url": "/files/1YMvRcTtg6BPkx8vFz-GJ4-r1qPMVP0zN"
+            "url": "/files/gos/1YMvRcTtg6BPkx8vFz-GJ4-r1qPMVP0zN.pdf"
         },
         {
             "file_id": "1YNLA3EitRY_N3wkDsBOcyTzgfcuBjIvl",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - timpani.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "timpani",
             "instrument_name_pol": "kotły",
             "voice": 1,
-            "url": "/files/1YNLA3EitRY_N3wkDsBOcyTzgfcuBjIvl"
+            "url": "/files/gos/1YNLA3EitRY_N3wkDsBOcyTzgfcuBjIvl.pdf"
         },
         {
             "file_id": "1wHubcRwTOAzAJ8arD_BTyyiOl5lqJ0pw",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - tuba.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "tuba",
             "instrument_name_pol": "tuba",
             "voice": 1,
             "key": "C",
-            "url": "/files/1wHubcRwTOAzAJ8arD_BTyyiOl5lqJ0pw"
+            "url": "/files/gos/1wHubcRwTOAzAJ8arD_BTyyiOl5lqJ0pw.pdf"
         },
         {
             "file_id": "1ACbz3qz7qtTMaht_InWLnxuuDWAPw16t",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - trumpet.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "trumpet",
             "instrument_name_pol": "trąbka",
             "voice": 1,
             "key": "Bb",
-            "url": "/files/1ACbz3qz7qtTMaht_InWLnxuuDWAPw16t"
+            "url": "/files/gos/1ACbz3qz7qtTMaht_InWLnxuuDWAPw16t.pdf"
         },
         {
             "file_id": "10le_8362kaWmLil3kJQxSeC3aJ6KmzjV",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - tambourine.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "tambourine",
             "instrument_name_pol": "tamburyn",
             "voice": 1,
-            "url": "/files/10le_8362kaWmLil3kJQxSeC3aJ6KmzjV"
+            "url": "/files/gos/10le_8362kaWmLil3kJQxSeC3aJ6KmzjV.pdf"
         },
         {
             "file_id": "1vD9xscDxDpTbOSotW3wGoGlbMNMDEAjf",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - flute.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "flute",
             "instrument_name_pol": "flet",
             "voice": 1,
             "key": "C",
-            "url": "/files/1vD9xscDxDpTbOSotW3wGoGlbMNMDEAjf"
+            "url": "/files/gos/1vD9xscDxDpTbOSotW3wGoGlbMNMDEAjf.pdf"
         },
         {
             "file_id": "1Bjvgk3oDqPyV93RvigRylbvF29nIszdk",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - tenor sax.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "tenor saxophone",
             "instrument_name_pol": "saksofon tenorowy",
             "voice": 1,
             "key": "Bb",
-            "url": "/files/1Bjvgk3oDqPyV93RvigRylbvF29nIszdk"
+            "url": "/files/gos/1Bjvgk3oDqPyV93RvigRylbvF29nIszdk.pdf"
         },
         {
             "file_id": "1RZ38K9g1r6Rw-yVLsOQri1FgfPAVZNUo",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - bari sax.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "baritone saxophone",
             "instrument_name_pol": "saksofon barytonowy",
             "voice": 1,
             "key": "Eb",
-            "url": "/files/1RZ38K9g1r6Rw-yVLsOQri1FgfPAVZNUo"
+            "url": "/files/gos/1RZ38K9g1r6Rw-yVLsOQri1FgfPAVZNUo.pdf"
         },
         {
             "file_id": "13jc8A1oslStQ5PMw2iG6KSiNeHMKP6nu",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - alto sax.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "alto saxophone",
             "instrument_name_pol": "saksofon altowy",
             "voice": 1,
             "key": "Eb",
-            "url": "/files/13jc8A1oslStQ5PMw2iG6KSiNeHMKP6nu"
+            "url": "/files/gos/13jc8A1oslStQ5PMw2iG6KSiNeHMKP6nu.pdf"
         },
         {
             "file_id": "15O_bFPwVTqLVIU_t5jO6IBSIaf9YkqgQ",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - bells.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "glockenspiel",
             "instrument_name_pol": "dzwonki",
             "voice": 1,
             "key": "C",
-            "url": "/files/15O_bFPwVTqLVIU_t5jO6IBSIaf9YkqgQ"
+            "url": "/files/gos/15O_bFPwVTqLVIU_t5jO6IBSIaf9YkqgQ.pdf"
         },
         {
             "file_id": "18pWUfu9vLz_HunZfJOjyXmDqintqrXBS",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - clarinet.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "clarinet",
             "instrument_name_pol": "klarnet",
             "voice": 1,
             "key": "Bb",
-            "url": "/files/18pWUfu9vLz_HunZfJOjyXmDqintqrXBS"
+            "url": "/files/gos/18pWUfu9vLz_HunZfJOjyXmDqintqrXBS.pdf"
         },
         {
             "file_id": "1l-ihnoCFMXANYBbt6erC9kMVKubAT4JI",
+            "bandId": "gos",
             "file_name": "The Kerry Bog - bass clar.pdf",
             "title": "The Kerry Bog",
-            "group_key": "The Kerry Bog",
+            "group_key": "the-kerry-bog",
             "instrument_name_en": "bass clarinet",
             "instrument_name_pol": "klarnet basowy",
             "voice": 1,
             "key": "Bb",
-            "url": "/files/1l-ihnoCFMXANYBbt6erC9kMVKubAT4JI"
+            "url": "/files/gos/1l-ihnoCFMXANYBbt6erC9kMVKubAT4JI.pdf"
         }
     ]
 }

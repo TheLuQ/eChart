@@ -27,6 +27,7 @@ export interface AgendaItem {
 
 export interface EventDetails {
     id: string
+    bandId: string
     title: string
     date: string
     time: string
@@ -70,12 +71,12 @@ function a11yProps(index: number) {
     };
 }
 
-async function getSheets(titles: string[]): Promise<Sheet[]> {
+async function getSheets(bandId: string | undefined, titles: string[]): Promise<Sheet[]> {
     const queryParams = new URLSearchParams()
     titles.forEach((title) => queryParams.append('group_key', title))
 
     const queryString = queryParams.toString()
-    const url = `/api/sheets${queryString ? `?${queryString}` : ''}`
+    const url = `/api/bands/${bandId}/sheets${queryString ? `?${queryString}` : ''}`
 
     return fetch(url, {
         method: 'GET'
@@ -84,7 +85,7 @@ async function getSheets(titles: string[]): Promise<Sheet[]> {
 }
 
 function Event() {
-    const { eventId } = useParams<{ eventId: string }>()
+    const { bandId, eventId } = useParams<{ bandId: string; eventId: string }>()
     const [event, setEvent] = useState<EventDetails | null>(null)
     const [sheets, setSheets] = useState<Sheet[]>([])
     const [loading, setLoading] = useState(true)
@@ -98,13 +99,13 @@ function Event() {
         fetch(`/api/events/${eventId}`)
             .then(res => res.json())
             .then(async (eventData) => {
-                const sheetsData = await getSheets(eventData.group_keys ?? [])
+                const sheetsData = await getSheets(bandId, eventData.group_keys ?? [])
                 setEvent(eventData)
                 setSheets(sheetsData)
                 setLoading(false)
             })
             .catch(() => setLoading(false))
-    }, [eventId])
+    }, [bandId, eventId])
 
     if (loading) {
         return (
@@ -125,7 +126,7 @@ function Event() {
                 </Typography>
                 <Button
                     component={Link}
-                    to="/events"
+                    to={`/bands/${bandId}/events`}
                     variant="contained"
                     startIcon={<ArrowBack />}
                 >
@@ -140,7 +141,7 @@ function Event() {
             <Box sx={{ mb: 2 }}>
                 <Button
                     component={Link}
-                    to="/events"
+                    to={`/bands/${bandId}/events`}
                     startIcon={<ArrowBack />}
                     sx={{ mb: 2 }}
                 >

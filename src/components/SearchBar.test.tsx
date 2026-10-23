@@ -7,7 +7,10 @@ describe('Search bar', () => {
         error: false,
         setError: vi.fn(),
         label: 'interesting',
-        options: ['one', 'two'],
+        options: [
+            { group_key: 'group-one', title: 'one' },
+            { group_key: 'group-two', title: 'two' }
+        ],
         setFilteredResult: vi.fn()
     }
     it('renders search element', () => {
@@ -25,6 +28,6 @@ describe('Search bar', () => {
         await userEvent.click(screen.getByText(/one/i))
         await userEvent.click(screen.getByText(/two/i))
         const filtered = mockSetfilter.mock.lastCall?.[0]
-        expect(filtered).toEqual(['one', 'two'])
+        expect(filtered).toEqual(['group-one', 'group-two'])
     })
 })

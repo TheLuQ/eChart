@@ -1,15 +1,24 @@
 import '@testing-library/jest-dom';
+import type { Server } from "http";
 import express, { type Request, type Response } from "express";
 
 interface Route {
     sheets: unknown
+    titles?: { titles?: { group_key: string; title: string }[]; etag?: string }
 }
+
+let activeServer: Server | undefined
 
 export function setupRoutes(setup: Route) {
     const app = express()
-    app.get("/api/sheets", (_req: Request, res: Response) => {
+    activeServer?.close()
+    app.get("/api/bands/:bandId/sheets", (_req: Request, res: Response) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(setup.sheets));
     });
-    app.listen(3003, () => console.log('SUCCESS!!!'))
+    app.get("/api/bands/:bandId/titles", (_req: Request, res: Response) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(setup.titles ?? { titles: [] }));
+    });
+    activeServer = app.listen(3003, () => console.log('SUCCESS!!!'))
 }
